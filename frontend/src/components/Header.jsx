@@ -43,7 +43,9 @@ const Header = () => {
                             </div>
                             {showMenu &&
                                 <div className="absolute right-0 bg-white py-2 px-2 shadow drop-shadow-md flex flex-col">
-                                    <Link to="newProduct" className="whitespace-nowrap cursor-pointer text-grey fw-bold fs-5 hover:text-blue-500 " style={{fontFamily:"serif"}}>New Product</Link>
+                                    <Link to="Signup" className="whitespace-nowrap cursor-pointer text-grey fw-bold fs-5 hover:text-blue-500 " style={{fontFamily:"serif"}}>
+                                        Sign up
+                                    </Link>
                                     <Link to="/Login" className="whitespace-nowrap cursor-pointer text-grey fw-bold fs-5 hover:text-blue-500 " style={{fontFamily:"serif"}}>Login</Link>
 
                                 </div>

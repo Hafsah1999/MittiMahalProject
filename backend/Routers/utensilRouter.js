@@ -3,9 +3,9 @@ const router = express.Router();
 const Model = require("../Models/productModel");
 
 
-router.get('./getbypcategory/:utensil', (req,res) => {
+router.get('/getbypcategory/:utensil', (req,res) => {
     console.log(req.params.id);
-    Model.find({pcategory: req.params.decoration})
+    Model.find({pcategory: req.params.utensil})
     .then((result) => {
         res.json(result)
     }).catch((err) => {

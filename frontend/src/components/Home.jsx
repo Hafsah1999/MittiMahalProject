@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react';
 
 const Home = () => {
 
-  
+
   const [productList, setproductList] = useState([]);
 
   const fetchUserData = async () => {
@@ -31,6 +31,8 @@ const Home = () => {
     fetchUserData();
   }, []);
 
+
+
   const displayproductData = () => {
     if (productList.length === 0) {
       return <h1 className='text-center fw-bold' style={{ color: "seagreen" }}>No Data Found</h1>
@@ -38,24 +40,24 @@ const Home = () => {
 
     return productList.map((product) => (
       <>
-        <div className='col-md-3 mt-4 mb-4'>
-          <div className="card bg-transparent shadow" style={{ border: "none" }}>
-            <img src={'http://localhost:5000/' + product.image} alt="" className="card-img-top img-fluid" style={{ objectFit: "cover", height: 250 }} />
-
+        <div className='col-md-3 mt-4 '>
+          <div className=" bg-transparent " style={{ border: "none" }}>
+            <Link to={`/ViewProduct/${product._id}`}> <img src={'http://localhost:5000/' + product.image} alt="" className="card-img-top img-fluid" style={{ objectFit: "cover", height: 250 }} />
+            </Link>
             <div className="card-footer" style={{ border: "none", height: "200px" }}>
-              <h3 className=' fw-semibold mt-3 mb-3' style={{ fontFamily: "serif" }}>{product.pname}</h3>
-              <p className='text-secondary' style={{ fontFamily: "cursive" }}>{product.pprice}</p>
+              <h2 className=' fw-semibold fs-5 mt-3 mb-3' style={{ fontFamily: "serif" }}>{product.pname}</h2>
+              <p className='text-red-700' style={{ fontFamily: "cursive" }}>{product.pprice}</p>
 
-              <p className='text-secondary' style={{ fontFamily: "cursive" }}>{product.pdetail}</p>
-              <p className='text-secondary' style={{ fontFamily: "cursive" }}>{product.pcategory}</p>
+              <p className='text-black  mb-3' style={{ fontFamily: "cursive" }}>{product.pcategory}</p>
 
-              <Link to="/Cart"><button className='btn btn-success'>Add to Cart</button></Link>
-              <Link to={`/ViewProduct/${product._id}`}><button className="btn" >View More</button></Link>
+              <Link to="/Cart"><button className='btn btn-success' style={{ fontFamily: "serif" }}>Add to Cart</button></Link>
+              <Link to={`/ViewProduct/${product._id}`}><button className="btn " style={{ fontFamily: "serif" }} >View More</button></Link>
             </div>
           </div>
         </div>
       </>
     ))
+
   }
   return (
     <>
@@ -138,7 +140,7 @@ const Home = () => {
 
 
 
- 
+
       {/* Section2 */}
 
       <div className="container">
@@ -193,27 +195,27 @@ const Home = () => {
 
 
       <div className="container mx-5 px-5 mb-5">
-  <div className="px-5 d-flex justify-center py-2 ">
-  <Link to="/All" className='Category-1 mx-2 px-5 py-2'>All</Link>
+        <div className="px-5 d-flex justify-center py-2 ">
+          <Link to="/" className='Category-1 mx-2 px-5 py-2'>All</Link>
 
-  
 
-  <Link to="/Showpiece" className='Category px-5 mx-2 py-2'>Showpiece</Link>
-  <Link to="/Utensils" className='Category mx-2 px-5 py-2'>Utensils</Link>
-  <Link to="/WaterContainer" className='Category mx-2 px-5 py-2'>Water Containers</Link>
-  <Link to="/Decoration" className='Category mx-2 px-5 py-2'>Decoration</Link>
-  </div>
 
-  <div className="container-fluid bg-dark bg-opacity-25">
-        <div className="container">
-          <div className="row mt-5 mb-5">
-            {displayproductData()}
+          <Link to="/Showpiece" className='Category px-5 mx-2 py-2'>Showpiece</Link>
+          <Link to="/Utensils" className='Category mx-2 px-5 py-2'>Utensils</Link>
+          <Link to="/WaterContainer" className='Category mx-2 px-5 py-2'>Water Containers</Link>
+          <Link to="/Decoration" className='Category mx-2 px-5 py-2'>Decoration</Link>
+        </div>
+
+
+        <div className="container-fluid mt-4 ">
+          <div className="container">
+            <div className="row  ">
+              {displayproductData()}
+            </div>
           </div>
         </div>
       </div>
 
-</div>
-      
       {/* Section4 */}
 
       <div className="container-fluid   flex items-center" style={{ backgroundImage: "linear-gradient(to bottom,grey,lightgrey)", height: "400px" }}>
@@ -254,7 +256,7 @@ const Home = () => {
             <div className="col-md-3 mb-3">
               <div className="card  shadow-lg  bg-white bg-opacity-25 border-none py-2 flex items-center h-100 content-center">
                 <div className="card-body">
-                  <img className='block m-auto mb-3' style={{ width: "70px", height: "70px" }} src="https://cdn-icons-png.flaticon.com/512/3305/3305262.png" alt="" />
+                  <img className='block m-auto mb-3 img-fluid' style={{ width: "70px", height: "70px" }} src="https://cdn-icons-png.flaticon.com/512/3305/3305262.png" alt="" />
                   <h4 className="text-center fw-bold">Pottery Wheel</h4>
                   <p className="mt-3 text-center " style={{ fontSize: "13px", fontFamily: "monospace" }}>Step into the world of pottery creation with our state-of-the-art Pottery Wheels. Designed for both beginners and seasoned artisans, our pottery wheels provide the perfect platform for unleashing your creativity and molding clay into exquisite forms.</p>
 

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 
 
 const Addproduct = () => {
+
     const [Data, setData] = useState([]);
 
     const Navigate = useNavigate();
@@ -34,7 +35,7 @@ const Addproduct = () => {
             action.resetForm();
             if (res.status === 200) {
             toast("Item uploaded successfully")
-                Navigate("/Browse")
+                Navigate("/Product")
             }
             else {
            toast("Something went wrong")
@@ -103,6 +104,9 @@ const Addproduct = () => {
                     <td>
                         <button className="btn btn-danger" onClick={() => { deleteFuction(obj._id) }}>Delete</button>
                     </td>
+                    <td>
+                        <button className="btn btn-success" onClick={() => { Navigate('/UpdateProduct/'+obj._id)}}>Update</button>
+                    </td>
                 </tr>
             </>
         ))
@@ -110,36 +114,7 @@ const Addproduct = () => {
     return (
         <>
 
-            <div>
-
-                <header className="bg-danger text-white ">
-                    <div className="container py-5">
-                        <h1 className="text-center">Manage Product</h1>
-
-                    </div>
-                </header>
-
-                <div className="container mt-5">
-                    <table className="table table-dark">
-                        <thead>
-                            <tr>
-                                <th>pname</th>
-                                <th>pdetail</th>
-                                <th>pprice</th>
-                                <th>pcategory</th>
-                                <th></th>
-
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {displayUsers()}
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-
+            
             <form onSubmit={addProductForm.handleSubmit} className="mb-2 w-50 m-auto mt-5 ">
                 <div className="form-group">
                     <label htmlFor="pname" className="mt-5 mb-2">pname</label>
@@ -195,10 +170,42 @@ const Addproduct = () => {
                     />
                 </div>
 
-                <button type="submit" className="btn btn-primary w-25">     Add Product</button>
+                <button type="submit" className="btn  mb-5 w-25">     Add Product</button>
 
 
             </form>
+
+            <div>
+
+                <header className="bg-danger text-white ">
+                    <div className="container py-5">
+                        <h1 className="text-center fs-3">Manage Product</h1>
+
+                    </div>
+                </header>
+
+                <div className="container mt-5">
+                    <table className="table table-dark">
+                        <thead>
+                            <tr>
+                                <th>pname</th>
+                                <th>pdetail</th>
+                                <th>pprice</th>
+                                <th>pcategory</th>
+                                <th></th>
+                                <th></th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {displayUsers()}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
         </>
     )
 }

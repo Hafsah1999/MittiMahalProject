@@ -3,7 +3,7 @@ const router = express.Router();
 const Model = require("../Models/productModel");
 
 
-router.get('./getbypcategory/:decoration', (req,res) => {
+router.get('/getbypcategory/:decoration', (req,res) => {
     console.log(req.params.id);
     Model.find({pcategory: req.params.decoration})
     .then((result) => {

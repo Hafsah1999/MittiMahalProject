@@ -5,5 +5,6 @@ const FeedbackSchema = new Schema ({
     email : String,
     phoneno : String,
     feedback : String,
+    image : String,
 });
 module.exports = model('Feedback', FeedbackSchema);
