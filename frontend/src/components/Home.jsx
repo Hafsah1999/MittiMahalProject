@@ -10,9 +10,21 @@ import 'swiper/css/pagination';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../Redux/CartContext';
 
 
 const Home = () => {
+
+  const dispatch = useDispatch();
+
+
+  // add to cart 
+  const send = (e)=>{
+      dispatch(addToCart(e))
+      toast.success("Item added In Your Cart")
+  }
 
 
   const [productList, setproductList] = useState([]);
@@ -49,8 +61,10 @@ const Home = () => {
               <p className='text-red-700' style={{ fontFamily: "cursive" }}>{product.pprice}</p>
 
               <p className='text-black  mb-3' style={{ fontFamily: "cursive" }}>{product.pcategory}</p>
-
-              <Link to="/Cart"><button className='btn btn-success' style={{ fontFamily: "serif" }}>Add to Cart</button></Link>
+              <button style={{ width: "150px", background: "#ff3054db", border: "none" }} 
+                                                    className='mt-2 mb-2'
+                                                    onClick={()=>send(product)}
+                                                >Add TO Cart</button>
               <Link to={`/ViewProduct/${product._id}`}><button className="btn " style={{ fontFamily: "serif" }} >View More</button></Link>
             </div>
           </div>

@@ -1,10 +1,15 @@
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { LuUserCircle2 } from "react-icons/lu";
 import { FaShoppingCart } from "react-icons/fa";
 import { useState } from "react";
 import Logo from '../assets/Logo2.png'
+import { useSelector } from "react-redux";
 
 const Header = () => {
+
+const {carts} = useSelector((state)=>state.allCart);
+
+
     const [showMenu, setshowMenu] = useState(false)
     const handleShowMenu = () => {
         setshowMenu(preve => !preve)
@@ -30,15 +35,19 @@ const Header = () => {
 
 
                         </nav>
+                        <NavLink to="/CartDetails" className="text-2xl text-slate-600 relative  hover:text-blue-500 ">
+                    <div id='ex4'>
+                        <span className='p1 fa-stack fa-2x has-badge' data-count={carts.length}>
+                        <FaShoppingCart />
+                            
+                        </span>
+                    </div>
+                    </NavLink>
 
-
-                        <div className="text-2xl text-slate-600 relative">
-                            <FaShoppingCart />
-                            <div className="absolute -top-1 -right-1  text-white bg-red-500 h-4 w-4 rounded-full m-0 p-0  text-sm text-center">0</div>
-                        </div>
+                      
                         <div className=" text-slate-600" onClick={handleShowMenu}>
                             <div className="text-2xl cursor-pointer">
-                                <LuUserCircle2 className="text-red-600 fw-bold fs-3 hover:text-blue-500 "/>
+                                <LuUserCircle2 className="text-slate-600 fw-bold fs-3 hover:text-blue-500 "/>
 
                             </div>
                             {showMenu &&

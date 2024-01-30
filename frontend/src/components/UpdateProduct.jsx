@@ -37,7 +37,7 @@ const UpdateProduct = () => {
 
     if (res.status === 200) {
     toast("Updated successfully")
-      navigate('/Browse');
+      navigate('/Product');
     }
   };
 
@@ -104,7 +104,7 @@ const UpdateProduct = () => {
                       {addProductForm.errors.pprice}
                     </span>
                     <input
-                      id="pcategory"
+                      id="pprice"
                       onChange={addProductForm.handleChange}
                       value={addProductForm.values.pprice}
                       type="text"

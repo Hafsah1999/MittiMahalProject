@@ -11,7 +11,6 @@ import { Toaster } from 'react-hot-toast';
 import UpdateProduct from './components/UpdateProduct'
 import ViewProduct from './components/ViewProduct'
 import Addproduct from './components/AddProduct'
-import Cart from './components/Cart'
 import Decoration from './components/Decoration'
 import Feedback from './components/Feedback'
 import PageNotFound from './components/PageNotFound'
@@ -19,6 +18,9 @@ import Showpiece from './components/Showpiece'
 import Utensil from './components/Utensil'
 import Watercontainer from './components/Watercontainer'
 import Footer from './components/Footer'
+import CartDetails from './components/CartDetails'
+import CartContext from './Redux/CartContext'
+import Cart from './components/Cart'
 
 
 const App = () => {
@@ -30,13 +32,17 @@ const App = () => {
         <main className="pt-16">
           <Routes >
             <Route path="/" element={<Home />} />
+            <Route path="/Cart" element={<Cart />} />
+
+            <Route path="/CartDetails" element={<CartDetails />} />
+            <Route path="/CartContext" element={<CartContext />} />
+
             <Route path="/About" element={<About />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/UpdateProduct/:id" element={<UpdateProduct />} />
             <Route path="/Signup" element={<Signup />} />
             <Route path="/viewProduct/:id" element={<ViewProduct />} />
             <Route path="/AddProduct" element={<Addproduct />} />
-            <Route path="/Cart" element={<Cart />} />
             <Route path="/Decoration" element={<Decoration />} />
             <Route path="/Feedback" element={<Feedback />} />
             <Route path="*" element={<PageNotFound />} />
