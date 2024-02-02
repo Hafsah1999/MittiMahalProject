@@ -1,26 +1,21 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
-// import { IoSearch } from "react-icons/io5";
+import { Link } from 'react-router-dom'
+import { IoSearch } from "react-icons/io5";
 
 const Showpiece = () => {
 
 
   const [productList, setproductList] = useState([]);
-//   const [masterList] = useState([]);
-
-  const { category } = useParams();
+  const [masterList, setMasterList] = useState([]);
 
   const fetchUserData = async () => {
-    const res = await fetch('http://localhost:5000/product/getbycategory/showpiece');
+    const res = await fetch('http://localhost:5000/product/getbypcategory/showpiece');
     console.log(res.status);
-
-    const data = await res.json();
-    console.log(data);
-    if (category) {
-      setproductList(data.filter((product) => product.category === category))
-    }
-    else{
-        setproductList(data);
+    if (res.status === 200) {
+      const data = await res.json();
+      console.log(data);
+      setproductList(data);
+      setMasterList(data);
     }
   };
 
@@ -29,15 +24,15 @@ const Showpiece = () => {
   }, []);
 
 
-//   const filterproduct = (e) => {
-//     const value = e.target.value;
-//     setproductList(masterList.filter((product) => {
-//       return (product.pcategory.toLowerCase().includes(value.toLowerCase()))
-//     }))
+  const filterproduct = (e) => {
+    const value = e.target.value;
+    setproductList(masterList.filter((product) => {
+      return (product.pcategory.toLowerCase().includes(value.toLowerCase()))
+    }))
 
     
 
-//   }
+  }
 
 
 
@@ -71,10 +66,10 @@ const Showpiece = () => {
   return (
     <>
 
-      {/* <form className="input-group mb-4 w-75 mx-auto">
+      <form className="input-group mb-4 w-75 mx-auto">
         <input type="search" role="search" className="form-control bg-dark bg-opacity-25" style={{fontFamily:"cursive"}} placeholder='Search' onChange={filterproduct} />
         <button className="btn btn-danger fs-5 fw-semibold" style={{fontFamily:"serif"}}><IoSearch /></button>
-      </form> */}
+      </form>
 
       <div className="container-fluid ">
         <div className="container">
