@@ -22,6 +22,8 @@ import Feedback from './components/User/Feedback'
 import PageNotFound from './components/PageNotFound'
 import Contact from './components/User/Contact'
 import { AppProvider } from './AppContext'
+import Admin from './components/Admin/Index'
+import ManageProduct from './components/Admin/ManageProduct'
 
 
 
@@ -30,38 +32,42 @@ const App = () => {
     <>
       <Toaster />
       <BrowserRouter>
-      <AppProvider>
-        <Header />
-        <main className="pt-16">
-          <Routes >
-            <Route path="/" element={<Home />} />
+        <AppProvider>
+          <Header />
+          <main className="pt-16">
+            <Routes >
+              <Route path="/" element={<Home />} />
 
-            <Route path="/CartDetails" element={<CartDetails />} />
-            <Route path="/CartContext" element={<CartContext />} />
+              <Route path="/CartDetails" element={<CartDetails />} />
+              <Route path="/CartContext" element={<CartContext />} />
 
-            <Route path="/About" element={<About />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/UpdateProduct/:id" element={<UpdateProduct />} />
-            <Route path="/Signup" element={<Signup />} />
-            <Route path="/viewProduct/:id" element={<ViewProduct />} />
-            <Route path="/AddProduct" element={<Addproduct />} />
-            <Route path="/Decoration" element={<Decoration />} />
-            <Route path="/Feedback" element={<Feedback />} />
-            <Route path="*" element={<PageNotFound />} />
-            <Route path="/Showpiece" element={<Showpiece />} />
-            <Route path="/Utensil" element={<Utensil />} />
-            <Route path="/WaterContainer" element={<Watercontainer />} />
+              <Route path="/About" element={<About />} />
+              <Route path="/Login" element={<Login />} />
+              <Route path="/Signup" element={<Signup />} />
+              <Route path="/viewProduct/:id" element={<ViewProduct />} />
+              <Route path="/Decoration" element={<Decoration />} />
+              <Route path="/Feedback" element={<Feedback />} />
+              <Route path="*" element={<PageNotFound />} />
+              <Route path="/Showpiece" element={<Showpiece />} />
+              <Route path="/Utensil" element={<Utensil />} />
+              <Route path="/WaterContainer" element={<Watercontainer />} />
 
-<Route path="admin" element=
+              <Route path="/admin" element={<Admin />}>
+                <Route path='dashboard' element={<Dashboard />} />
+                <Route path="UpdateProduct/:id" element={<UpdateProduct />} />
+                <Route path='manageProduct' element={<ManageProduct />} />
+                <Route path="/AddProduct" element={<Addproduct />} />
 
-            <Route path="/Product" element={<Product />} />
+              </Route>
 
-            <Route path="/Contact" element={<Contact />} />
+              <Route path="/Product" element={<Product />} />
 
-          </Routes>
-          <Footer />
+              <Route path="/Contact" element={<Contact />} />
 
-        </main>
+            </Routes>
+            <Footer />
+
+          </main>
         </AppProvider>
       </BrowserRouter>
     </>
