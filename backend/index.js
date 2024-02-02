@@ -31,10 +31,10 @@ app.use('/contact', contactRouter)
 app.use('/user', userRouter)
 app.use('/product', productRouter)
 app.use('/util', utilRouter)
-app.use('/showpiece',showpieceRouter)
-app.use('/utensil',utensilRouter)
-app.use('/decoration',decorationRouter)
-app.use('/watercontainer',watercontainerRouter)
+app.use('/product',showpieceRouter)
+app.use('/product',utensilRouter)
+app.use('/product',decorationRouter)
+app.use('/product',watercontainerRouter)
 
 
 
