@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import SignupLoginImg from '../assets/loginimg.webp'
+import SignupLoginImg from '../../assets/loginimg.webp'
 import { BiHide, BiShow } from "react-icons/bi";
 import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup'
 import { useFormik } from 'formik'
 import { toast } from 'react-hot-toast';
+import useAppContext from '../../AppContext';
 
 
 const LoginSchema = Yup.object().shape({
@@ -17,6 +18,7 @@ const LoginSchema = Yup.object().shape({
 })
 
 const Login = () => {
+    const { setLoggedin } = useAppContext();
 
     const navigate = useNavigate();
     //step1 : formik initialization
@@ -43,8 +45,20 @@ const Login = () => {
 
             if (res.status === 200) {
                 toast('Login Success')
-                navigate('/Product');
-            } else {
+                setLoggedin(true);
+                const data = await res.json();
+                sessionStorage.setItem('isloggedin', true);
+                if (data.role === 'admin') {
+                    sessionStorage.setItem('admin', JSON.stringify(data));
+                    navigate('/admin/base');
+                } else {
+                    sessionStorage.setItem('user', JSON.stringify(data));
+                    navigate('/');
+                }
+
+            }
+            else if (res.status === 400
+            ) {
                 toast("Error")
             }
 

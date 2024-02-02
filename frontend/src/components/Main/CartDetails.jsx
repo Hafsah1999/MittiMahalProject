@@ -1,12 +1,15 @@
 // import  { useEffect, useState } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart,removeToCart ,removeSingleIteams,emptycartIteam} from '../Redux/CartContext';
+import { addToCart,removeToCart ,removeSingleIteams,emptycartIteam} from '../../Redux/CartContext';
 import toast from 'react-hot-toast';
+import { useEffect, useState } from 'react';
+// import { Navigate } from 'react-router-dom';
 // import {loadStripe} from '@stripe/stripe-js';
 
 
 const CartDetails = () => {
+    const [ setData] = useState([]);
 
     const {carts} = useSelector((state)=>state.allCart);
     console.log(carts)
@@ -95,6 +98,23 @@ const CartDetails = () => {
     //     }
     // }
 
+    const fetchUserData = async () => {
+        const res = await fetch('http://localhost:5000/product/getall');
+
+        console.log(res.status);
+        if (res.status === 200) {
+            const data = await res.json();
+            console.log(data);
+            setData(data);
+        }
+    }
+
+    useEffect(() => {
+        fetchUserData();
+    }, [])
+
+
+
 
     return (
         <>
@@ -102,12 +122,12 @@ const CartDetails = () => {
                 <div className='col-md-8 mt-5 mb-5 cardsdetails'>
                     <div className="card">
                         <div className="card-header bg-dark p-3">
-                            <div className='card-header-flex'>
-                                <h5 className='text-white m-0'>Cart Calculation{carts.length >0 ? `(${carts.length})`:""}</h5>
+                            <div className=' flex  justify-content-between'>
+                                <h5 className='text-white m-0 fs-5 mb-3' style={{fontFamily:"cursive"}}>Items in the Cart{carts.length >0 ? `(${carts.length})`:""}</h5>
                                 {
-                                    carts.length > 0 ? <button className='btn btn-danger mt-0 btn-sm'
+                                    carts.length > 0 ? <button className='btn btn-danger fs-5 mt-0 btn-sm'
                                     onClick={emptycart}
-                                    ><i className='fa fa-trash-alt mr-2'></i><span>EmptyCart</span></button>
+                                    ><i className='fa fa-trash-alt mr-2 '></i><span>EmptyCart</span></button>
                                         : ""
                                 }
                             </div>
@@ -129,13 +149,13 @@ const CartDetails = () => {
                                     </table> :
                                     <table className='table cart-table mb-0 table-responsive-sm'>
                                         <thead>
-                                            <tr>
+                                            <tr className='text-center'>
                                                 <th>Action</th>
                                                 <th>Product</th>
                                                 <th>Name</th>
                                                 <th>Price</th>
                                                 <th>Qty</th>
-                                                <th className='text-right'> <span id="amount" className='amount'>Total Amount</span></th>
+                                                <th> <span id="amount" className='amount'>Total Amount</span></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -145,27 +165,27 @@ const CartDetails = () => {
                                                         <>
                                                             <tr>
                                                                 <td>
-                                                                    <button className='prdct-delete'
+                                                                    <button className='btn block m-auto'
                                                                     onClick={()=>handleDecrement(data.id)}
                                                                     ><i className='fa fa-trash-alt'></i></button>
                                                                 </td>
-                                                                <td><div className='product-img'><img src={data.imgdata} alt="" /></div></td>
-                                                                <td><div className='product-name'><p>{data.dish}</p></div></td>
-                                                                <td>{data.price}</td>
+                                                                <td><div className='text-center fs-5 ' style={{fontFamily:"serif"}}><p>{data.pcategory}</p> </div></td>
+                                                                <td><div className='text-center fs-5'  style={{fontFamily:"serif"}}><p>{data.pname}</p></div></td>
+                                                                <td className='text-center fs-5'  style={{fontFamily:"serif"}}>{data.pprice}</td>
                                                                 <td>
-                                                                    <div className="prdct-qty-container">
-                                                                        <button className='prdct-qty-btn' type='button' 
+                                                                    <div className="text-center">
+                                                                        <button className='btn' type='button' 
                                                                         onClick={data.qnty <=1 ?()=>handleDecrement(data.id) :()=>handleSingleDecrement(data)}
                                                                         >
                                                                             <i className='fa fa-minus'></i>
                                                                         </button>
-                                                                        <input type="text" className='qty-input-box' value={data.qnty} disabled name="" id="" />
-                                                                        <button className='prdct-qty-btn' type='button' onClick={()=>handleIncrement(data)}>
+                                                                       <button className="btn">{data.qnty}</button> 
+                                                                        <button className='btn' type='button' onClick={()=>handleIncrement(data)}>
                                                                             <i className='fa fa-plus'></i>
                                                                         </button>
                                                                     </div>
                                                                 </td>
-                                                                <td className='text-right'>₹ {data.qnty * data.price}</td>
+                                                                <td className='text-center fs-5'  style={{fontFamily:"serif"}}>₹ {data.qnty * data.pprice}</td>
                                                             </tr>
                                                         </>
                                                     )

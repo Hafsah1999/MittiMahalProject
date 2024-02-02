@@ -1,9 +1,20 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { IoSearch } from "react-icons/io5";
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../Redux/CartContext';
+import toast from 'react-hot-toast';
 
 const Product = () => {
 
+  const dispatch = useDispatch();
+
+
+  // add to cart 
+  const send = (e) => {
+    dispatch(addToCart(e))
+    toast.success("Item added In Your Cart")
+  }
 
   const [productList, setproductList] = useState([]);
   const [masterList, setMasterList] = useState([]);
@@ -54,7 +65,8 @@ const Product = () => {
 
               <p className='text-black  mb-3' style={{ fontFamily: "cursive" }}>{product.pcategory}</p>
 
-              <Link to="/Cart"><button className='btn btn-success' style={{fontFamily:"serif"}}>Add to Cart</button></Link>
+              <button className='mt-2 mb-2 btn btn-danger' onClick={() => send(product)} >Add TO Cart</button>
+             
               <Link to={`/ViewProduct/${product._id}`}><button className="btn " style={{fontFamily:"serif"}} >View More</button></Link>
             </div>
           </div>

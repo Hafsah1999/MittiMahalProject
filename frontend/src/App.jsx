@@ -1,26 +1,28 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import Header from './components/Header'
-import Home from './components/Home'
-import About from './components/About'
-import Product from './components/Product'
-import Contact from './components/Contact'
-import Login from './components/Login'
-import Signup from './components/Signup'
-import { Toaster } from 'react-hot-toast';
-import UpdateProduct from './components/UpdateProduct'
-import ViewProduct from './components/ViewProduct'
-import Addproduct from './components/AddProduct'
-import Decoration from './components/Decoration'
-import Feedback from './components/Feedback'
-import PageNotFound from './components/PageNotFound'
-import Showpiece from './components/Showpiece'
-import Utensil from './components/Utensil'
-import Watercontainer from './components/Watercontainer'
-import Footer from './components/Footer'
-import CartDetails from './components/CartDetails'
+import { Toaster } from 'react-hot-toast'
+import Header from './components/Main/Header'
+import Addproduct from './components/Admin/AddProduct'
+import Dashboard from './components/Admin/Dashboard'
+import CartDetails from './components/Main/CartDetails'
+import Decoration from './components/Main/Decoration'
+import Footer from './components/Main/Footer'
+import Product from './components/Main/Product'
+import Showpiece from './components/Main/Showpiece'
+import Utensil from './components/Main/Utensil'
+import ViewProduct from './components/Main/ViewProduct'
+import Watercontainer from './components/Main/Watercontainer'
+import About from './components/User/About'
+import Home from './components/Main/Home'
 import CartContext from './Redux/CartContext'
-import Cart from './components/Cart'
+import Login from './components/User/Login'
+import UpdateProduct from './components/Admin/UpdateProduct'
+import Signup from './components/User/Signup'
+import Feedback from './components/User/Feedback'
+import PageNotFound from './components/PageNotFound'
+import Contact from './components/User/Contact'
+import { AppProvider } from './AppContext'
+
 
 
 const App = () => {
@@ -28,11 +30,11 @@ const App = () => {
     <>
       <Toaster />
       <BrowserRouter>
+      <AppProvider>
         <Header />
         <main className="pt-16">
           <Routes >
             <Route path="/" element={<Home />} />
-            <Route path="/Cart" element={<Cart />} />
 
             <Route path="/CartDetails" element={<CartDetails />} />
             <Route path="/CartContext" element={<CartContext />} />
@@ -50,6 +52,7 @@ const App = () => {
             <Route path="/Utensil" element={<Utensil />} />
             <Route path="/WaterContainer" element={<Watercontainer />} />
 
+            <Route path="/Dashboard" element={<Dashboard />} />
 
 
             <Route path="/Product" element={<Product />} />
@@ -60,6 +63,7 @@ const App = () => {
           <Footer />
 
         </main>
+        </AppProvider>
       </BrowserRouter>
     </>
   )

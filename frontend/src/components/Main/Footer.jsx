@@ -1,8 +1,9 @@
-import Logo from '../assets/Logo2.png'
+import Logo from '../../assets/Logo.png'
 import { FaPhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { ImAddressBook } from "react-icons/im";
 import { toast } from 'react-hot-toast';
+
 
 
 const Footer = () => {
@@ -71,14 +72,14 @@ const Footer = () => {
                                     <input type="email" className="form-control " style={{ fontFamily: "cursive" }} placeholder="Enter your email" aria-label="Recipient's username" aria-describedby="basic-addon2" />
                                     <button className=" btn btn-warning fs-5" onClick={subscribe} style={{ fontFamily: "serif" }}>Subscribe</button>
                                 </div>
-                               
+
                             </form>
-                                </div>
                         </div>
-                        <div className="mt-5">
-                            <p className='text-center text-red-600'>© 2024 MittiMahal, Inc. All rights reserved.</p>
-                            
-                        </div>
+                    </div>
+                    <div className="mt-5">
+                        <p className='text-center text-red-600'>© 2024 MittiMahal, Inc. All rights reserved.</p>
+
+                    </div>
                 </footer>
             </div>
 
