@@ -3,7 +3,6 @@ import  { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart,removeToCart ,removeSingleIteams,emptycartIteam} from '../../Redux/CartContext';
 import toast from 'react-hot-toast';
-import { useEffect, useState } from 'react';
 // import { Navigate } from 'react-router-dom';
 // import {loadStripe} from '@stripe/stripe-js';
 
