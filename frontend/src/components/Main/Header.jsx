@@ -36,12 +36,12 @@ const Header = () => {
 
                         </nav>
                         <NavLink to="/CartDetails" className="text-2xl text-slate-600 relative  hover:text-blue-500 ">
-                            <div id='ex4'>
-                                <span className='' data-count={carts.length}>
-                                    <FaShoppingCart />
-
+                        <FaShoppingCart className="text-red-600" />
+                            {carts.length > 0 && (
+                                <span className="absolute top-0 right-0 bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                                    {carts.length}
                                 </span>
-                            </div>
+                            )}
                         </NavLink>
 
 

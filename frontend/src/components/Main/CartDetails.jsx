@@ -1,74 +1,85 @@
-import  { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart,removeToCart ,removeSingleIteams,emptycartIteam} from '../../Redux/CartContext';
+import { addToCart, removeToCart, removeSingleIteams, emptycartIteam } from '../../Redux/CartContext';
 import toast from 'react-hot-toast';
 // import { Navigate } from 'react-router-dom';
 // import {loadStripe} from '@stripe/stripe-js';
 
 
 const CartDetails = () => {
-    const [ setData] = useState([]);
+    const [setData] = useState([]);
 
-    const {carts} = useSelector((state)=>state.allCart);
+    const { carts } = useSelector((state) => state.allCart);
     console.log(carts)
-    
-    // const [setPrice] = useState(0);
-    // const [setTotalQuantity] = useState(0);
+
+    const [price, setPrice] = useState(0);
+    const [totalQuantity, setTotalQuantity] = useState(0);
 
     const dispatch = useDispatch();
 
     // add to cart
-    const handleIncrement = (e)=>{
+    const handleIncrement = (e) => {
         dispatch(addToCart(e))
+        // Find the cart item
+        const cartItem = carts.find(item => item.id === data.id);
+
+        // Increment the quantity
+        cartItem.qnty += 1;
+
+        // Update the price
+        cartItem.pprice = cartItem.qnty * data.pprice;
+
+        // Update the cart
+        setCarts([...carts]);
     }
 
     // remove to cart
-    const handleDecrement = (e)=>{
+    const handleDecrement = (e) => {
         dispatch(removeToCart(e));
         toast.success("Item Remove From Your Cart")
     }
 
     // remove single item 
-    const handleSingleDecrement = (e)=>{
+    const handleSingleDecrement = (e) => {
         dispatch(removeSingleIteams(e))
     }
 
     // empty cart
-    const emptycart = ()=>{
+    const emptycart = () => {
         dispatch(emptycartIteam())
         toast.success("Your Cart is Empty")
 
     }
 
     // count total price
-    // const total = ()=>{
-    //     let totalprice = 0
-    //     carts.map((ele)=>{
-    //         totalprice = ele.price * ele.qnty + totalprice
-    //     });
-    //     setPrice(totalprice)
-    // }  
+    const total = () => {
+        let totalprice = 0
+        carts.map((ele) => {
+            totalprice = ele.price * ele.qnty + totalprice
+        });
+        setPrice(totalprice)
+    }
 
-    
+
     // // count total quantity
-    // const countquantity = ()=>{
-    //     let totalquantity = 0
-    //     carts.map((ele) => {
-    
-    //         totalquantity = ele.qnty + totalquantity
-    // });
-    //     setTotalQuantity(totalquantity)
-        
-    // }  
-    
-    // useEffect(()=>{
-    //     total()
-    // },[total])
+    const countquantity = () => {
+        let totalquantity = 0
+        carts.map((ele) => {
 
-    // useEffect(()=>{
-    //     countquantity()
-    // },[countquantity]);
+            totalquantity = ele.qnty + totalquantity
+        });
+        setTotalQuantity(totalquantity)
+
+    }
+
+    useEffect(() => {
+        total()
+    }, [total])
+
+    useEffect(() => {
+        countquantity()
+    }, [countquantity]);
 
     // // payment integration
     // const makePayment = async()=>{
@@ -91,7 +102,7 @@ const CartDetails = () => {
     //     const result = stripe.redirectToCheckout({
     //         sessionId:session.id
     //     });
-        
+
     //     if(result.error){
     //         console.log(result.error);
     //     }
@@ -122,10 +133,10 @@ const CartDetails = () => {
                     <div className="card">
                         <div className="card-header bg-dark p-3">
                             <div className=' flex  justify-content-between'>
-                                <h5 className='text-white m-0 fs-5 mb-3' style={{fontFamily:"cursive"}}>Items in the Cart{carts.length >0 ? `(${carts.length})`:""}</h5>
+                                <h5 className='text-white m-0 fs-5 mb-3' style={{ fontFamily: "cursive" }}>Items in the Cart{carts.length > 0 ? `(${carts.length})` : ""}</h5>
                                 {
                                     carts.length > 0 ? <button className='btn btn-danger fs-5 mt-0 btn-sm'
-                                    onClick={emptycart}
+                                        onClick={emptycart}
                                     ><i className='fa fa-trash-alt mr-2 '></i><span>EmptyCart</span></button>
                                         : ""
                                 }
@@ -133,19 +144,19 @@ const CartDetails = () => {
 
                         </div>
                         <div className="card-body p-0">
-                                {
-                                    carts.length === 0 ? <table className='table cart-table mb-0'>
-                                        <tbody>
-                                            <tr>
-                                                <td colSpan={6}>
-                                                    <div className='cart-empty'>
-                                                        <i className='fa fa-shopping-cart'></i>
-                                                        <p>Your Cart Is Empty</p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table> :
+                            {
+                                carts.length === 0 ? <table className='table cart-table mb-0'>
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan={6}>
+                                                <div className='cart-empty'>
+                                                    <i className='fa fa-shopping-cart'></i>
+                                                    <p>Your Cart Is Empty</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table> :
                                     <table className='table cart-table mb-0 table-responsive-sm'>
                                         <thead>
                                             <tr className='text-center'>
@@ -159,32 +170,32 @@ const CartDetails = () => {
                                         </thead>
                                         <tbody>
                                             {
-                                                carts.map((data)=>{
+                                                carts.map((data) => {
                                                     return (
                                                         <>
                                                             <tr>
                                                                 <td>
                                                                     <button className='btn block m-auto'
-                                                                    onClick={()=>handleDecrement(data.id)}
+                                                                        onClick={() => handleDecrement(data.id)}
                                                                     ><i className='fa fa-trash-alt'></i></button>
                                                                 </td>
-                                                                <td><div className='text-center fs-5 ' style={{fontFamily:"serif"}}><p>{data.pcategory}</p> </div></td>
-                                                                <td><div className='text-center fs-5'  style={{fontFamily:"serif"}}><p>{data.pname}</p></div></td>
-                                                                <td className='text-center fs-5'  style={{fontFamily:"serif"}}>{data.pprice}</td>
+                                                                <td><div className='text-center fs-5 ' style={{ fontFamily: "serif" }}><p>{data.pcategory}</p> </div></td>
+                                                                <td><div className='text-center fs-5' style={{ fontFamily: "serif" }}><p>{data.pname}</p></div></td>
+                                                                <td className='text-center fs-5' style={{ fontFamily: "serif" }}>{data.pprice}</td>
                                                                 <td>
                                                                     <div className="text-center">
-                                                                        <button className='btn' type='button' 
-                                                                        onClick={data.qnty <=1 ?()=>handleDecrement(data.id) :()=>handleSingleDecrement(data)}
+                                                                        <button className='btn' type='button'
+                                                                            onClick={data.qnty <= 1 ? () => handleDecrement(data.id) : () => handleSingleDecrement(data)}
                                                                         >
                                                                             <i className='fa fa-minus'></i>
                                                                         </button>
-                                                                       <button className="btn">{data.qnty}</button> 
-                                                                        <button className='btn' type='button' onClick={()=>handleIncrement(data)}>
+                                                                        <button className="btn">{data.qnty}</button>
+                                                                        <button className='btn' type='button' onClick={() => handleIncrement(data)}>
                                                                             <i className='fa fa-plus'></i>
                                                                         </button>
                                                                     </div>
                                                                 </td>
-                                                                <td className='text-center fs-5'  style={{fontFamily:"serif"}}>₹ {data.qnty * data.pprice}</td>
+                                                                <td className='text-center fs-5' style={{ fontFamily: "serif" }}>₹ {data.qnty * data.pprice}</td>
                                                             </tr>
                                                         </>
                                                     )
@@ -201,7 +212,7 @@ const CartDetails = () => {
                                             </tr>
                                         </tfoot> */}
                                     </table>
-                                }
+                            }
                         </div>
                     </div>
                 </div>
