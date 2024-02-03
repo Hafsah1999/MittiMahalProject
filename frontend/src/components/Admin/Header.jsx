@@ -5,17 +5,17 @@ const Header = () => {
   return (
     <>
     
-    <header className="flex items-center justify-between py-1" style={{boxShadow:"0 6px 7px -3px black"}}>
-        <div className="menu-icon">
-            <BsJustify className='icon' />
+    <header className="flex items-center justify-between py-1 px-4" >
+        <div className="none">
+            <BsJustify className='fs-4' />
         </div>
         <div className=''>
-            <BsSearch />
+            <BsSearch className='fs-4'/>
         </div>
-        <div className="">
-            <BsFillBellFill />
-            <BsFillEnvelopeFill />
-            <BsPersonCircle />
+        <div className="flex px-2">
+            <BsFillBellFill  className='fs-4'/>
+            <BsFillEnvelopeFill className='mx-3 fs-4'/>
+            <BsPersonCircle className='fs-4' />
         </div>
     </header>
     
