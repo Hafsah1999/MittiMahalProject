@@ -11,7 +11,7 @@ const CartDetails = () => {
     const [setData] = useState([]);
 
     const { carts } = useSelector((state) => state.allCart);
-    console.log(carts)
+    // console.log(carts)
 
     const [price, setPrice] = useState(0);
     const [totalQuantity, setTotalQuantity] = useState(0);
@@ -22,7 +22,7 @@ const CartDetails = () => {
     const handleIncrement = (e) => {
         dispatch(addToCart(e))
         // Find the cart item
-        const cartItem = carts.find(item => item.id === data.id);
+        const cartItem = carts.find(item => item._id === data._id);
 
         // Increment the quantity
         cartItem.qnty += 1;
@@ -80,6 +80,13 @@ const CartDetails = () => {
     useEffect(() => {
         countquantity()
     }, [countquantity]);
+
+    useEffect(() => {
+        sessionStorage.setItem("cart", JSON.stringify(carts));
+
+    }, [carts])
+    
+    
 
     // // payment integration
     // const makePayment = async()=>{
