@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, removeToCart, removeSingleIteams, emptycartIteam } from '../../Redux/CartContext';
 import toast from 'react-hot-toast';
 // import { Navigate } from 'react-router-dom';
-import {loadStripe} from '@stripe/stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 
 
 const CartDetails = () => {
@@ -97,8 +97,8 @@ const CartDetails = () => {
         sessionStorage.setItem("cart", JSON.stringify(carts));
 
     }, [carts])
-    
-    
+
+
 
     // // payment integration
     // const makePayment = async()=>{
@@ -227,7 +227,7 @@ const CartDetails = () => {
                                                 <th colSpan={2}>&nbsp;</th>
                                                 {/* <th>Items In Cart <span className='ml-2 mr-2'>:</span><span className='text-danger'>{totalquantity}</span></th> */}
                                                 {/* <th className='text-right'>Total Price<span className='ml-2 mr-2'>:</span><span className='text-danger'>₹ {totalprice}</span></th> */}
-                                                <th className='text-right'><button className='btn bg-green-600 hover:bg-green-700 text-white ' style={{fontFamily:"serif"}} onClick={makePayment} type='button'>Checkout</button></th>
+                                                <th className='text-right'><button className='btn bg-green-600 hover:bg-green-700 text-white ' style={{ fontFamily: "serif" }} onClick={makePayment} type='button'>Checkout</button></th>
                                             </tr>
                                         </tfoot>
                                     </table>
