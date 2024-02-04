@@ -4,17 +4,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, removeToCart, removeSingleIteams, emptycartIteam } from '../../Redux/CartContext';
 import toast from 'react-hot-toast';
 // import { Navigate } from 'react-router-dom';
-// import {loadStripe} from '@stripe/stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
 
 
 const CartDetails = () => {
     const [setData] = useState([]);
 
     const { carts } = useSelector((state) => state.allCart);
+<<<<<<< HEAD
     // console.log(carts)
 
     const [price, setPrice] = useState(0);
     const [totalQuantity, setTotalQuantity] = useState(0);
+=======
+    console.log(carts)
+    const [setCarts] = useState([]);
+    // const [setPrice] = useState(0);
+    // const [setTotalQuantity] = useState(0);
+>>>>>>> 0295cff0d6013c85539788cd7f9ac31dc7716d44
 
     const dispatch = useDispatch();
 
@@ -22,13 +29,17 @@ const CartDetails = () => {
     const handleIncrement = (e) => {
         dispatch(addToCart(e))
         // Find the cart item
+<<<<<<< HEAD
         const cartItem = carts.find(item => item._id === data._id);
+=======
+        // const cartItem = carts.find(item => item.id === data.id);
+>>>>>>> 0295cff0d6013c85539788cd7f9ac31dc7716d44
 
         // Increment the quantity
-        cartItem.qnty += 1;
+        // cartItem.qnty += 1;
 
         // Update the price
-        cartItem.pprice = cartItem.qnty * data.pprice;
+        // cartItem.pprice = cartItem.qnty * data.pprice;
 
         // Update the cart
         setCarts([...carts]);
@@ -53,6 +64,7 @@ const CartDetails = () => {
     }
 
     // count total price
+<<<<<<< HEAD
     const total = () => {
         let totalprice = 0
         carts.map((ele) => {
@@ -209,15 +221,15 @@ const CartDetails = () => {
                                                 })
                                             }
                                         </tbody>
-                                        {/* <tfoot>
+                                        <tfoot>
                                             <tr>
                                                 <th>&nbsp;</th>
                                                 <th colSpan={2}>&nbsp;</th>
-                                                <th>Items In Cart <span className='ml-2 mr-2'>:</span><span className='text-danger'>{totalquantity}</span></th>
-                                                <th className='text-right'>Total Price<span className='ml-2 mr-2'>:</span><span className='text-danger'>₹ {totalprice}</span></th>
-                                                <th className='text-right'><button className='btn btn-success' onClick={makePayment} type='button'>Checkout</button></th>
+                                                {/* <th>Items In Cart <span className='ml-2 mr-2'>:</span><span className='text-danger'>{totalquantity}</span></th> */}
+                                                {/* <th className='text-right'>Total Price<span className='ml-2 mr-2'>:</span><span className='text-danger'>₹ {totalprice}</span></th> */}
+                                                <th className='text-right'><button className='btn bg-green-600 hover:bg-green-700 text-white ' style={{fontFamily:"serif"}} onClick={makePayment} type='button'>Checkout</button></th>
                                             </tr>
-                                        </tfoot> */}
+                                        </tfoot>
                                     </table>
                             }
                         </div>

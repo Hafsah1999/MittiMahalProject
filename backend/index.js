@@ -38,9 +38,6 @@ app.use('/product',watercontainerRouter)
 
 
 
-
-
-
 app.use(express.static('./uploads'));
 
 
