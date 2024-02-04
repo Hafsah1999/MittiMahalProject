@@ -76,7 +76,9 @@ const Product = () => {
   }
 
   return (
+    
     <>
+    <div className='pt-20'>
 
       <form className="input-group mb-4 w-75 mx-auto">
         <input type="search" role="search" className="form-control bg-dark bg-opacity-25" style={{fontFamily:"cursive"}} placeholder='Search' onChange={filterproduct} />
@@ -93,7 +95,7 @@ const Product = () => {
 
 
 
-
+</div>
 
     </>
   )

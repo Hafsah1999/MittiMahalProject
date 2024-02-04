@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom"
+import { Link, NavLink, useLocation } from "react-router-dom"
 import { LuUserCircle2 } from "react-icons/lu";
 import { FaShoppingCart } from "react-icons/fa";
 import { useState } from "react";
@@ -14,7 +14,19 @@ const Header = () => {
     const handleShowMenu = () => {
         setshowMenu(preve => !preve)
     }
-    return (
+
+    //Logic for navbar hide from some components
+    const location = useLocation();
+
+    // Specify the paths where you want to hide the Navbar
+    const hideNavbarPaths = ['/Login','/Signup','/Admin/Dashboard'];
+  
+    // Check if the current path is in the hideNavbarPaths array
+    const shouldHideNavbar = hideNavbarPaths.includes(location.pathname);
+  
+    // Render Navbar only if shouldHideNavbar is false
+    return shouldHideNavbar ? null : (
+  
         <>
             <header className="fixed shadow-md  w-full h-14 px-4  md:px-4 z-50 bg-white">
                 <div className="flex items-center   h-full justify-between">
@@ -36,7 +48,7 @@ const Header = () => {
 
                         </nav>
                         <NavLink to="/CartDetails" className="text-2xl text-slate-600 relative  hover:text-blue-500 ">
-                        <FaShoppingCart className="text-red-600" />
+                            <FaShoppingCart className="text-red-600" />
                             {carts.length > 0 && (
                                 <span className="absolute top-0 right-0 bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
                                     {carts.length}

@@ -72,7 +72,7 @@ const Home = () => {
   }
   return (
     <>
-      {/* <div className=" bg-slate-200"> */}
+      <div className=" bg-slate-200 pt-5">
 
       {/* Section1 */}
 
@@ -90,7 +90,7 @@ const Home = () => {
         className="mySwiper  pt-2 mb-5"
       >
         <SwiperSlide>
-          <div className="container p-1">
+          <div className="container-fluid p-1">
             <div className="row bg-img-home-1 " >
               <div className="col-  d-flex justify-content-center flex-column align-items-center bg-dark bg-opacity-50">
                 <p className="fw-semibold text-center  px-4" style={{ fontFamily: "serif", letterSpacing: "2px", fontSize: "47px", color: "white", backgroundImage: "linear-gradient(to right,grey,lightgrey)" }}>Elevate your lifestyle  with <span style={{ color: "brown" }}> Mitti Mahal</span></p>
@@ -105,7 +105,7 @@ const Home = () => {
         </SwiperSlide>
         <SwiperSlide>
 
-          <div className="container p-1">
+          <div className="container-fluid p-1">
             <div className="row bg-img-home-2 " >
               <div className="col-  d-flex justify-content-center flex-column align-items-center bg-dark bg-opacity-50">
                 <p className="fw-semibold text-center px-4" style={{ fontFamily: "serif", letterSpacing: "2px", fontSize: "47px", color: "white", backgroundImage: "linear-gradient(to right,grey,lightgrey)" }}>Quenching Thirst Naturally  with <span style={{ color: "brown" }}> Mitti Mahal</span></p>
@@ -120,7 +120,7 @@ const Home = () => {
 
         </SwiperSlide>
         <SwiperSlide>
-          <div className="container p-1">
+          <div className="container-fluid p-1">
             <div className="row bg-img-home-4 " >
               <div className="col-  d-flex justify-content-center flex-column align-items-center bg-dark bg-opacity-50">
                 <p className="fw-semibold text-center px-4 bg-opacity-25" style={{ fontFamily: "serif", backgroundImage: "linear-gradient(to right,grey,lightgrey)", letterSpacing: "2px", fontSize: "47px", color: "white" }}>Elevate Your <span style={{ color: "brown" }}> Kitchen</span> with Earthy Elegance </p>
@@ -134,7 +134,7 @@ const Home = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="container p-1">
+          <div className="container-fluid p-1">
             <div className="row bg-img-home-3 " >
               <div className="col-  d-flex justify-content-center flex-column align-items-center bg-dark bg-opacity-50">
                 <p className="fw-semibold text-center px-4 " style={{ fontFamily: "serif", letterSpacing: "2px", fontSize: "47px", color: "white", backgroundImage: "linear-gradient(to right,grey,lightgrey)" }}>Mud Artistry in <span style={{ color: "brown" }}>  Decorative </span>Delights</p>
@@ -279,7 +279,7 @@ const Home = () => {
       </div>
 
 
-      {/* </div> */}
+      </div>
     </>
   )
 }

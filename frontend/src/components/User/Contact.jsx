@@ -56,7 +56,7 @@ const Contact = () => {
 
   })
   return (
-    <div>
+    <div className='pt-16'>
 
       <div className="bg-img-contact">
 

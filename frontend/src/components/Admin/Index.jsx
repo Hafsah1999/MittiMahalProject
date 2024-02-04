@@ -7,9 +7,9 @@ const Admin = () => {
     <>
     
     <div className="grid-container">
-        <Header />
-        <Sidebar />
-        <Outlet />
+        <Header > <Outlet /></Header>
+        <Sidebar ></Sidebar>
+       
     </div>
     
     </>
