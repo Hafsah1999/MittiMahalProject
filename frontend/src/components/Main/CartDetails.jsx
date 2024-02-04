@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, removeToCart, removeSingleIteams, emptycartIteam } from '../../Redux/CartContext';
 import toast from 'react-hot-toast';
 // import { Navigate } from 'react-router-dom';
-// import {loadStripe} from '@stripe/stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
 
 
 const CartDetails = () => {
@@ -12,9 +12,9 @@ const CartDetails = () => {
 
     const { carts } = useSelector((state) => state.allCart);
     console.log(carts)
-
-    const [price, setPrice] = useState(0);
-    const [totalQuantity, setTotalQuantity] = useState(0);
+    const [setCarts] = useState([]);
+    // const [setPrice] = useState(0);
+    // const [setTotalQuantity] = useState(0);
 
     const dispatch = useDispatch();
 
@@ -22,13 +22,13 @@ const CartDetails = () => {
     const handleIncrement = (e) => {
         dispatch(addToCart(e))
         // Find the cart item
-        const cartItem = carts.find(item => item.id === data.id);
+        // const cartItem = carts.find(item => item.id === data.id);
 
         // Increment the quantity
-        cartItem.qnty += 1;
+        // cartItem.qnty += 1;
 
         // Update the price
-        cartItem.pprice = cartItem.qnty * data.pprice;
+        // cartItem.pprice = cartItem.qnty * data.pprice;
 
         // Update the cart
         setCarts([...carts]);
@@ -53,60 +53,60 @@ const CartDetails = () => {
     }
 
     // count total price
-    const total = () => {
-        let totalprice = 0
-        carts.map((ele) => {
-            totalprice = ele.price * ele.qnty + totalprice
-        });
-        setPrice(totalprice)
-    }
-
-
-    // // count total quantity
-    const countquantity = () => {
-        let totalquantity = 0
-        carts.map((ele) => {
-
-            totalquantity = ele.qnty + totalquantity
-        });
-        setTotalQuantity(totalquantity)
-
-    }
-
-    useEffect(() => {
-        total()
-    }, [total])
-
-    useEffect(() => {
-        countquantity()
-    }, [countquantity]);
-
-    // // payment integration
-    // const makePayment = async()=>{
-    //     const stripe = await loadStripe("ENTER YOUR PUBLISHABLE KEY");
-
-    //     const body = {
-    //         products:carts
-    //     }
-    //     const headers = {
-    //         "Content-Type":"application/json"
-    //     }
-    //     const response = await fetch("http://localhost:7000/api/create-checkout-session",{
-    //         method:"POST",
-    //         headers:headers,
-    //         body:JSON.stringify(body)
+    // const total = () => {
+    //     let totalprice = 0
+    //     carts.map((ele) => {
+    //         totalprice = ele.price * ele.qnty + totalprice
     //     });
-
-    //     const session = await response.json();
-
-    //     const result = stripe.redirectToCheckout({
-    //         sessionId:session.id
-    //     });
-
-    //     if(result.error){
-    //         console.log(result.error);
-    //     }
+    //     setPrice(totalprice)
     // }
+
+
+    // // // count total quantity
+    // const countquantity = () => {
+    //     let totalquantity = 0
+    //     carts.map((ele) => {
+
+    //         totalquantity = ele.qnty + totalquantity
+    //     });
+    //     setTotalQuantity(totalquantity)
+
+    // }
+
+    // useEffect(() => {
+    //     total()
+    // }, [total])
+
+    // useEffect(() => {
+    //     countquantity()
+    // }, [countquantity]);
+
+    // payment integration
+    const makePayment = async()=>{
+        const stripe = await loadStripe("ENTER YOUR PUBLISHABLE KEY");
+
+        const body = {
+            products:carts
+        }
+        const headers = {
+            "Content-Type":"application/json"
+        }
+        const response = await fetch("http://localhost:5000/api/create-checkout-session",{
+            method:"POST",
+            headers:headers,
+            body:JSON.stringify(body)
+        });
+
+        const session = await response.json();
+
+        const result = stripe.redirectToCheckout({
+            sessionId:session.id
+        });
+
+        if(result.error){
+            console.log(result.error);
+        }
+    }
 
     const fetchUserData = async () => {
         const res = await fetch('http://localhost:5000/product/getall');
@@ -202,15 +202,15 @@ const CartDetails = () => {
                                                 })
                                             }
                                         </tbody>
-                                        {/* <tfoot>
+                                        <tfoot>
                                             <tr>
                                                 <th>&nbsp;</th>
                                                 <th colSpan={2}>&nbsp;</th>
-                                                <th>Items In Cart <span className='ml-2 mr-2'>:</span><span className='text-danger'>{totalquantity}</span></th>
-                                                <th className='text-right'>Total Price<span className='ml-2 mr-2'>:</span><span className='text-danger'>₹ {totalprice}</span></th>
-                                                <th className='text-right'><button className='btn btn-success' onClick={makePayment} type='button'>Checkout</button></th>
+                                                {/* <th>Items In Cart <span className='ml-2 mr-2'>:</span><span className='text-danger'>{totalquantity}</span></th> */}
+                                                {/* <th className='text-right'>Total Price<span className='ml-2 mr-2'>:</span><span className='text-danger'>₹ {totalprice}</span></th> */}
+                                                <th className='text-right'><button className='btn bg-green-600 hover:bg-green-700 text-white ' style={{fontFamily:"serif"}} onClick={makePayment} type='button'>Checkout</button></th>
                                             </tr>
-                                        </tfoot> */}
+                                        </tfoot>
                                     </table>
                             }
                         </div>

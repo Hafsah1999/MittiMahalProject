@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { IoSearch } from "react-icons/io5";
 
 const Utensil = () => {
 
 
-    const [product, setProduct] = useState([]);
+    const [productList, setProductList] = useState([]);
 
 
     const { category } = useParams();
@@ -18,9 +18,9 @@ const Utensil = () => {
       const data = await res.json();
       console.log(data);
       if (category) {
-        setProduct(data.filter((ser) => ser.category === category));
+        setProductList(data.filter((ser) => ser.category === category));
       } else {
-        setProduct(data);
+        setProductList(data);
       }
     };
   
