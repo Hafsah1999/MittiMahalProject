@@ -13,7 +13,7 @@ const cartSlice = createSlice({
         // add to cart
         addToCart: (state, action) => {
 
-            const IteamIndex = state.carts.findIndex((iteam) => iteam.id === action.payload.id);
+            const IteamIndex = state.carts.findIndex((iteam) => iteam._id === action.payload._id);
 
             if (IteamIndex >= 0) {
                 state.carts[IteamIndex].qnty += 1
@@ -22,6 +22,7 @@ const cartSlice = createSlice({
                 state.carts = [...state.carts, temp]
 
             }
+            console.log(state.carts);
         },
 
         // remove perticular iteams
