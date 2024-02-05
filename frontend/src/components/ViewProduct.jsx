@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom'
+import { addToCart } from '../Redux/CartContext';
+import toast from 'react-hot-toast';
 
 const ViewProduct = () => {
   const { id } = useParams();
@@ -16,6 +19,11 @@ const ViewProduct = () => {
   // const handleReset = () => {
   //     setCount(0);
   // }
+  const dispatch = useDispatch();
+  const send = (e) => {
+    dispatch(addToCart(e))
+    toast.success("Item added In Your Cart")
+  }
 
 
 
@@ -61,7 +69,8 @@ const ViewProduct = () => {
                   {/* <button className="reset-button" onClick={handleReset}>Reset</button> */}
                 </div>
 
-                <Link to="/Cart"><button className='btn btn-success fs-5  px-3' style={{ fontFamily: "serif" }}>Add to Cart</button></Link>
+              <button className='mt-2 mb-2 btn btn-success' onClick={() => send(productList)} >Add TO Cart</button>
+                
                 </div>
 
                 <Link to="/BuyNow"><button type="button " style={{ fontFamily: "serif" }} className='btn btn-danger fs-5 w-50 mt-3'>Buy Now</button></Link>
