@@ -50,7 +50,7 @@ const Login = () => {
                 sessionStorage.setItem('isloggedin', true);
                 if (data.role === 'admin') {
                     sessionStorage.setItem('admin', JSON.stringify(data));
-                    navigate('/admin/dashboard');
+                    navigate('/Admin/dashboard');
                 } else {
                     sessionStorage.setItem('user', JSON.stringify(data));
                     navigate('/');

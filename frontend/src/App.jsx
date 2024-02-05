@@ -3,7 +3,7 @@ import './App.css'
 import { Toaster } from 'react-hot-toast'
 import Header from './components/Header'
 import Addproduct from './components/AddProduct'
-import Dashboard from './components/Admin/Dashboard'
+// import Dashboard from './components/Admin/Dashboard'
 import CartDetails from './components/CartDetails'
 import Decoration from './components/Decoration'
 import Footer from './components/Footer'
@@ -22,7 +22,7 @@ import Feedback from './components/Feedback'
 import PageNotFound from './components/PageNotFound'
 import Contact from './components/Contact'
 import { AppProvider } from './AppContext'
-import Admin from './components/Admin/Index'
+// import Admin from './components/Admin/Index'
 import Main from './components/Admin/Index'
 import ManageProduct from './components/ManageProduct'
 
@@ -58,7 +58,7 @@ const App = () => {
               <Route path="/AddProduct" element={<Addproduct />} />
 
               <Route path="/Admin" element={<Main />}>
-                <Route path='dashboard' element={<Dashboard />} />
+                {/* <Route path='dashboard' element={<Dashboard />} /> */}
                 <Route path='ManageProduct' element={<ManageProduct />} />
 
   
