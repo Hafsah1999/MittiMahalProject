@@ -20,7 +20,8 @@ function Main() {
         <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} />
         
       </div>
-      </div>
+    </div>
+
   )
 }
 

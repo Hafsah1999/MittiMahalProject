@@ -1,135 +1,101 @@
-
-
+import React from 'react'
+import { useFormik } from 'formik'
 import Swal from 'sweetalert2'
-
-
+import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
 
-import { useFormik } from 'formik'
-import * as Yup from 'yup'
-import { useState } from 'react'
-
 const FeedbackSchema = Yup.object().shape({
-    customername: Yup.string().required('Required').min(6, 'Too short')
-        .max(20, 'Too long'),
-    email: Yup.string().required('Required').email('Invalid email'),
-    phoneno: Yup.string().required('Required'),
-    feedback: Yup.string().required('Required'),
+    name: Yup.string().required("Required"),
+    email: Yup.string().email('Invalid email').required('Required'),
+    message: Yup.string().required("Required"),
 })
 
-
-
 const Feedback = () => {
+
     const navigate = useNavigate();
-    const [selFile, setSelFile] = useState("");
 
-
-    const FeedbackForm = useFormik({
+    const feedbackForm = useFormik({
         initialValues: {
-            customername: "",
-            email: "",
-            phoneno: "",
-            feedback: "",
+            name: '',
+            email: '',
+            phone_number: '',
+            message: ''
         },
-
-
         onSubmit: async (values, action) => {
-            values.image = selFile;
             console.log(values);
 
-            const res = await fetch('http://localhost:5000/Feedback/add', {
+            const res = await fetch('http://localhost:5000/feedback/add', {
                 method: 'POST',
                 body: JSON.stringify(values),
                 headers: {
                     'Content-Type': 'application/json'
                 }
-
             });
-            console.log(res.status)
+            console.log(res.status);
             action.resetForm();
 
             if (res.status === 200) {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Feedback submitted successfully',
+                    title: 'Message Sent Successfully',
+                    text: 'We will contact you soon'
                 })
-                navigate('/About');
+                navigate('/');
             } else {
                 Swal.fire({
                     icon: 'error',
-                    title: 'Oops...',
-                    text: 'Something went wrong!',
-                })
+                    title: 'Message Failed',
+                    text: 'Oops! Something went wrong'
 
+                })
             }
         },
-
-        validationSchema: FeedbackSchema
-
-    })
-    const uploadFile = async (e) => {
-        let file = e.target.files[0];
-        setSelFile(file.name);
-        const fd = new FormData();
-        fd.append('myfile', file);
-
-        const res = await fetch('http://localhost:5000/util/uploadfile', {
-            method: 'POST',
-            body: fd
-        })
-        console.log(res.status);
-    }
-
+        validationSchema: FeedbackSchema,
+    });
 
     return (
-        <div>
-
-            <div className="bg-img-signup">
-                {/* <div className="card  bg-dark bg-opacity-25" style={{height:"100vh",border:"none"}}> */}
-
+        <div className="container mt-5">
+            <div className="card-shadow">
                 <div className="row">
-                    <div className="col">
-                        <div className="card Feedback-card bg-light bg-opacity-25  ">
-
-                            <h1 className="text-center mt-5 signup-heading">Your Feedback</h1>
-
-
-
-                            <div className="card-body">
-                                <form className='w-75 ' onSubmit={FeedbackForm.handleSubmit}>
-                                    <div className="form-group">
-                                        <label htmlFor="imageUrl" className="mb-2"></label>
-                                        <input
-                                            type="file"
-                                            name="image"
-                                            onChange={uploadFile}
-                                            className="form-control mb-3"
-                                            required=''
-                                        />
+                    <div className="col-md-6 d-flex justify-content-center p-5">
+                        <h1 className='position-absolute display-5 text-danger' style={{ fontFamily: "fantasy" }}>Query ? Connect with us</h1>
+                        <form onSubmit={feedbackForm.handleSubmit}>
+                            <div className="row">
+                                
+                                <div className="col-md-6 c-margin">
+                                    <input type="text" className="form-control inp-clr" placeholder="Name"
+                                        id="name"
+                                        onChange={feedbackForm.handleChange}
+                                        value={feedbackForm.values.name} />
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-12 ">
+                                        <input type="email" className="form-control mt-4 inp-clr" placeholder="Email"
+                                            id="email"
+                                            onChange={feedbackForm.handleChange}
+                                            value={feedbackForm.values.email} />
                                     </div>
-                                    <span style={{ color: 'red', fontsize: '10', marginLeft: '50' }}>{FeedbackForm.touched.customername && FeedbackForm.errors.customername}</span>
-                                    <input type="text" placeholder="customername" className="form-control " id="customername" value={FeedbackForm.values.customername} onChange={FeedbackForm.handleChange} />
-                                    <span style={{ color: 'red', fontsize: '10' }}>{FeedbackForm.touched.email && FeedbackForm.errors.email}</span>
-
-                                    <input type="email" placeholder="email" className="form-control  " id="email" value={FeedbackForm.values.email} onChange={FeedbackForm.handleChange} />
-                                    <span style={{ color: 'red', fontsize: '10', }}>{FeedbackForm.touched.phoneno && FeedbackForm.errors.phoneno}</span>
-
-                                    <input type="phoneno" placeholder="phoneno" className="form-control " id="phoneno" value={FeedbackForm.values.phoneno} onChange={FeedbackForm.handleChange} />
-
-                                    <span style={{ color: 'red', fontsize: '10', }}>{FeedbackForm.touched.feedback && FeedbackForm.errors.feedback}</span>
-
-                                    <input type="feedback" placeholder="Feedback" className="form-control  " id="feedback" value={FeedbackForm.values.feedback} onChange={FeedbackForm.handleChange} />
-
-                                    <button type="submit" className="btn btn-primary w-100   mt-4 fs-5 p-1  " style={{ marginLeft: '50px', borderRadius: "20px", fontFamily: "serif" }}>Submit</button>
-
-
-                                </form>
+                                    <div className="col-md-12">
+                                        <input type="number" className="form-control mt-4 inp-clr" placeholder="Phone Number"
+                                            id="phone_number"
+                                            onChange={feedbackForm.handleChange}
+                                            value={feedbackForm.values.phone_number} />
+                                    </div>
+                                    <div className="col-md-12">
+                                        <textarea type="text" className="form-control mt-4 inp-clr" placeholder="Enquiry message..."
+                                            id="message"
+                                            onChange={feedbackForm.handleChange}
+                                            value={feedbackForm.values.message} />
+                                    </div>
+                                    <div className="col-md-12 d-flex justify-content-center">
+                                        <button type="submit" className="btn btn-danger mt-4">Submit</button>
+                                    </div>
+                                </div>
                             </div>
-
-
-
-                        </div>
-                        {/* </div> */}
+                        </form>
+                    </div>
+                    <div className="col-md-6">
+                        <img className='c-img' src="https://cdn.dribbble.com/users/180062/screenshots/6784972/dribbble.gif" />
                     </div>
                 </div>
             </div>
@@ -138,5 +104,3 @@ const Feedback = () => {
 }
 
 export default Feedback
-
-
