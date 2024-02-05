@@ -12,7 +12,7 @@ const userSchema = new Schema({
   image: String,
   role: {
     type: String,
-    defualt: "user",
+    default: "user",
   },
 });
 module.exports = model("user", userSchema);

@@ -1,21 +1,18 @@
-<<<<<<< HEAD
-import React from 'react'
+
+// import React from 'react'
 import 
-{BsCart3, BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, 
-  BsListCheck, BsMenuButtonWideFill, BsFillGearFill}
+{BsCart3, BsFillArchiveFill, BsFillGrid3X3GapFill}
  from 'react-icons/bs'
  import { Link } from 'react-router-dom'
-=======
-import { Link } from 'react-router-dom'
 import { FaUser } from "react-icons/fa";
 import { MdSpaceDashboard } from "react-icons/md";
 import { FaShoppingBag } from "react-icons/fa";
-import { BsCart3 } from 'react-icons/bs';
->>>>>>> 0c42f01a6a5761200fb1a6c532d4dd7df8327457
+// import { BsCart3 } from 'react-icons/bs';
+
 
 function Sidebar({openSidebarToggle, OpenSidebar}) {
   return (
-<<<<<<< HEAD
+    <>
     <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive": ""}>
         <div className='sidebar-title'>
             <div className='sidebar-brand'>
@@ -39,9 +36,8 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
             
         </ul>
     </aside>
-  )
-=======
-    <>
+  
+   
 
       
 
@@ -101,7 +97,6 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
 
         </>
         )
->>>>>>> 0c42f01a6a5761200fb1a6c532d4dd7df8327457
 }
 
         export default Sidebar
