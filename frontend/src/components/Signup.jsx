@@ -87,8 +87,8 @@ const Signup = () => {
 
     return (
         <>
-            <div className="container p-5">
-                <div className="row p-5">
+            <div className="container px-5">
+                <div className="row px-5">
 
                     <div className="col-md-6 ">
                         <div className="w-full max-w-sm bg-white m-auto  flex  flex-col p-4">
@@ -129,8 +129,8 @@ const Signup = () => {
                         </div>
                     </div>
 
-                    <div className="col-md-6">
-                        <img className='mt-5' src="https://media.istockphoto.com/id/1361114024/vector/potter-girl-a-woman-sculpts-a-clay-vase-behind-a-potters-wheel.jpg?s=612x612&w=0&k=20&c=g3nnQN5oRPFu0lZfzY3fhTjs_cXe38uTfSzmhOluUbk=" alt="" />
+                    <div className="col-md-6 p-5">
+                        <img className='mt-4' src="https://media.istockphoto.com/id/1361114024/vector/potter-girl-a-woman-sculpts-a-clay-vase-behind-a-potters-wheel.jpg?s=612x612&w=0&k=20&c=g3nnQN5oRPFu0lZfzY3fhTjs_cXe38uTfSzmhOluUbk=" alt="" />
                     </div>
 
                 </div>

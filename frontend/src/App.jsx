@@ -35,9 +35,9 @@ const App = () => {
       <BrowserRouter>
         <AppProvider>
           <Header />
-          <main className="pt-16">
+      
             <Routes >
-              <Route path="/" element={<Home />} />
+              <Route path="/"  element={<Home />} />
 
               <Route path="/CartDetails" element={<CartDetails />} />
               <Route path="/CartContext" element={<CartContext />} />
@@ -72,7 +72,6 @@ const App = () => {
             </Routes>
             <Footer />
 
-          </main>
         </AppProvider>
       </BrowserRouter>
     </>

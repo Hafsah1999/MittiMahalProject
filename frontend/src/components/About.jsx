@@ -59,7 +59,7 @@ const About = () => {
     return (
 
         <>
-
+   <div className='pt-16'>
             <div className="container p-5">
                 <p className="fs-1 text-center mt-5 fw-semibold text-red-700" style={{ fontFamily: "serif" }}> Crafting Timeless Elegance with MudCraft</p>
                 <p className="fs-5 text-center text-secondary mt-4 mb-5">Join us on a creative adventure! We make special things from mud that tell stories about care and <br /> natural beauty. At MittiMahal, we mix passion and art to bring you simple, unique treasures.</p>
@@ -115,7 +115,7 @@ const About = () => {
 
             </div>
 
-
+            </div>
 
         </>
     )

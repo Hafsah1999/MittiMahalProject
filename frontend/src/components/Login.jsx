@@ -79,9 +79,9 @@ const Login = () => {
 
     return (
         <>
-            <div className="container p-5">
-                <div className="row p-5">
-                    <div className=" col-md-6">
+            <div className="container px-5">
+                <div className="row px-5">
+                    <div className=" col-md-6 p-5">
                         <img src="https://media.istockphoto.com/id/1355237827/vector/woman-decorating-pot-working-at-ceramic-studio.jpg?s=612x612&w=0&k=20&c=jkCuvNGGRAItWcmgDKhzgFuQ6kl4DAa6EAcBAfNY_ek=" alt="" />
                     </div>
                     <div className="col-md-6">

@@ -134,7 +134,7 @@ const CartDetails = () => {
 
 
     return (
-        <>
+        <div className='pt-16'>
             <div className='row justify-content-center m-0'>
                 <div className='col-md-8 mt-5 mb-5 cardsdetails'>
                     <div className="card">
@@ -225,7 +225,7 @@ const CartDetails = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

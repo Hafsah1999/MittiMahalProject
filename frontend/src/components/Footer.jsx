@@ -3,6 +3,7 @@ import { FaPhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { ImAddressBook } from "react-icons/im";
 import { toast } from 'react-hot-toast';
+import { useLocation } from 'react-router-dom';
 
 
 
@@ -10,7 +11,19 @@ const Footer = () => {
     const subscribe = () => {
         toast("Subscribed")
     }
-    return (
+
+     //Logic for footer hide from some components
+     const location = useLocation();
+
+     // Specify the paths where you want to hide the Navbar
+     const hideFooterPaths = ['/Login','/Signup','/Admin/Dashboard'];
+   
+     // Check if the current path is in the hideNavbarPaths array
+     const shouldHideFooter = hideFooterPaths.includes(location.pathname);
+   
+     // Render Navbar only if shouldHideNavbar is false
+     return shouldHideFooter ? null : (
+   
         <>
 
             <div className="container mt-5 p-5">

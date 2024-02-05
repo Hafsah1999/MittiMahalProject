@@ -13,6 +13,7 @@ function Main() {
   }
 
   return (
+<<<<<<< HEAD
     <div>
       <div className='grid-container'>
         {/* <Header OpenSidebar={OpenSidebar} > <Outlet /> </Header> */}
@@ -20,6 +21,14 @@ function Main() {
         
       </div>
       
+=======
+    <>
+    
+    <div className="grid-container">
+        <Header > <Outlet /></Header>
+        <Sidebar ></Sidebar>
+       
+>>>>>>> 0c42f01a6a5761200fb1a6c532d4dd7df8327457
     </div>
   )
 }
