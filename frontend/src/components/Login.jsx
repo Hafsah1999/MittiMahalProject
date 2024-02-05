@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import SignupLoginImg from '../../assets/loginimg.webp'
+import SignupLoginImg from '../assets/loginimg.webp'
 import { BiHide, BiShow } from "react-icons/bi";
 import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup'
 import { useFormik } from 'formik'
 import { toast } from 'react-hot-toast';
-import useAppContext from '../../AppContext';
+import useAppContext from '../AppContext';
 
 
 const LoginSchema = Yup.object().shape({

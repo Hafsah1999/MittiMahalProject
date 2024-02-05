@@ -1,102 +1,90 @@
 import { useEffect, useState } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, removeToCart, removeSingleIteams, emptycartIteam } from '../../Redux/CartContext';
+import { addToCart, removeToCart, removeSingleIteams, emptycartIteam } from '../Redux/CartContext';
 import toast from 'react-hot-toast';
 // import { Navigate } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 
 
 const CartDetails = () => {
-    const [setData] = useState([]);
+    const [data, setData] = useState([]);
 
     const { carts } = useSelector((state) => state.allCart);
-<<<<<<< HEAD
+
     // console.log(carts)
 
     const [price, setPrice] = useState(0);
     const [totalQuantity, setTotalQuantity] = useState(0);
-=======
     console.log(carts)
     const [setCarts] = useState([]);
     // const [setPrice] = useState(0);
     // const [setTotalQuantity] = useState(0);
->>>>>>> 0295cff0d6013c85539788cd7f9ac31dc7716d44
 
     const dispatch = useDispatch();
 
     // add to cart
     const handleIncrement = (e) => {
-        dispatch(addToCart(e))
-        // Find the cart item
-<<<<<<< HEAD
-        const cartItem = carts.find(item => item._id === data._id);
-=======
-        // const cartItem = carts.find(item => item.id === data.id);
->>>>>>> 0295cff0d6013c85539788cd7f9ac31dc7716d44
+        dispatch(addToCart(e));
+        toast.success("Item added to your cart");
 
-        // Increment the quantity
-        // cartItem.qnty += 1;
-
-        // Update the price
-        // cartItem.pprice = cartItem.qnty * data.pprice;
-
-        // Update the cart
-        setCarts([...carts]);
+        // Update total price and quantity after adding to the cart
+        total();
+        countquantity();
     }
 
     // remove to cart
     const handleDecrement = (e) => {
         dispatch(removeToCart(e));
-        toast.success("Item Remove From Your Cart")
+        toast.success("Item removed from your cart");
+
+        // Update total price and quantity after removing from the cart
+        total();
+        countquantity();
     }
 
     // remove single item 
     const handleSingleDecrement = (e) => {
-        dispatch(removeSingleIteams(e))
+        dispatch(removeSingleIteams(e));
+        
+        // Update total price and quantity after removing a single item
+        total();
+        countquantity();
     }
 
     // empty cart
     const emptycart = () => {
-        dispatch(emptycartIteam())
-        toast.success("Your Cart is Empty")
+        dispatch(emptycartIteam());
+        toast.success("Your cart is empty");
 
+        // Update total price and quantity after emptying the cart
+        total();
+        countquantity();
     }
 
     // count total price
-<<<<<<< HEAD
     const total = () => {
-        let totalprice = 0
-        carts.map((ele) => {
-            totalprice = ele.price * ele.qnty + totalprice
+        let totalprice = 0;
+        carts.forEach((ele) => {
+            totalprice = ele.pprice * ele.qnty + totalprice;
         });
-        setPrice(totalprice)
+        setPrice(totalprice);
     }
 
-
-    // // count total quantity
+    // count total quantity
     const countquantity = () => {
-        let totalquantity = 0
-        carts.map((ele) => {
-
-            totalquantity = ele.qnty + totalquantity
+        let totalquantity = 0;
+        carts.forEach((ele) => {
+            totalquantity = ele.qnty + totalquantity;
         });
-        setTotalQuantity(totalquantity)
-
+        setTotalQuantity(totalquantity);
     }
 
     useEffect(() => {
-        total()
-    }, [total])
-
-    useEffect(() => {
-        countquantity()
-    }, [countquantity]);
-
-    useEffect(() => {
+        total();
+        countquantity();
         sessionStorage.setItem("cart", JSON.stringify(carts));
-
-    }, [carts])
+    }, [carts]);
 
 
 
@@ -214,7 +202,7 @@ const CartDetails = () => {
                                                                         </button>
                                                                     </div>
                                                                 </td>
-                                                                <td className='text-center fs-5' style={{ fontFamily: "serif" }}>₹ {data.qnty * data.pprice}</td>
+                                                                <td className='text-center fs-5' style={{ fontFamily: "serif" }}>{data.pprice}</td>
                                                             </tr>
                                                         </>
                                                     )
@@ -227,7 +215,8 @@ const CartDetails = () => {
                                                 <th colSpan={2}>&nbsp;</th>
                                                 {/* <th>Items In Cart <span className='ml-2 mr-2'>:</span><span className='text-danger'>{totalquantity}</span></th> */}
                                                 {/* <th className='text-right'>Total Price<span className='ml-2 mr-2'>:</span><span className='text-danger'>₹ {totalprice}</span></th> */}
-                                                <th className='text-right'><button className='btn bg-green-600 hover:bg-green-700 text-white ' style={{ fontFamily: "serif" }} onClick={makePayment} type='button'>Checkout</button></th>
+                                                
+                                                {/* <th className='text-right'><button className='btn bg-green-600 hover:bg-green-700 text-white ' style={{ fontFamily: "serif" }} onClick={makePayment} type='button'>Checkout</button></th> */}
                                             </tr>
                                         </tfoot>
                                     </table>

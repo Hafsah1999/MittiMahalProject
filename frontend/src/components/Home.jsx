@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../../Redux/CartContext';
+import { addToCart } from '../Redux/CartContext';
 
 
 const Home = () => {
@@ -212,7 +212,7 @@ const Home = () => {
 
 
           <Link to="/Showpiece" className='Category px-5 mx-2 py-2'>Showpiece</Link>
-          <Link to="/Utensils" className='Category mx-2 px-5 py-2'>Utensils</Link>
+          <Link to="/Utensil" className='Category mx-2 px-5 py-2'>Utensils</Link>
           <Link to="/WaterContainer" className='Category mx-2 px-5 py-2'>Water Containers</Link>
           <Link to="/Decoration" className='Category mx-2 px-5 py-2'>Decoration</Link>
         </div>

@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom"
 import { LuUserCircle2 } from "react-icons/lu";
 import { FaShoppingCart } from "react-icons/fa";
 import { useState } from "react";
-import Logo from '../../assets/Logo2.png'
+import Logo from '../assets/Logo2.png'
 import { useSelector } from "react-redux";
 
 const Header = () => {
@@ -19,7 +19,7 @@ const Header = () => {
             <header className="fixed shadow-md  w-full h-14 px-4  md:px-4 z-50 bg-white">
                 <div className="flex items-center   h-full justify-between">
                     <div className="h-12">
-                        <Link to="/" className="nav-link">
+                        <Link to="/admin/ManageProduct" className="nav-link">
                             <img style={{ width: "140px" }} className="h-12" src={Logo} alt="" />
                         </Link>
                     </div>

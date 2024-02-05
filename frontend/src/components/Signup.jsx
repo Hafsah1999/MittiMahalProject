@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import SignupLoginImg from '../../assets/loginimg.webp'
+import SignupLoginImg from '../assets/loginimg.webp'
 import { BiHide, BiShow } from "react-icons/bi";
 import { Link, useNavigate } from 'react-router-dom';
-import { ImagetoBase64 } from '../../utility/imagetobase64'
+import { ImagetoBase64 } from '../utility/imagetobase64'
 import { toast } from 'react-hot-toast';
 const Signup = () => {
     const navigate = useNavigate();

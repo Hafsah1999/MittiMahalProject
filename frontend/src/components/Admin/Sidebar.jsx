@@ -1,41 +1,35 @@
-import { BsCart, BsCart3 } from "react-icons/bs"
-import { Link } from "react-router-dom"
+import React from 'react'
+import 
+{BsCart3, BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, 
+  BsListCheck, BsMenuButtonWideFill, BsFillGearFill}
+ from 'react-icons/bs'
+ import { Link } from 'react-router-dom'
 
-const Sidebar = () => {
+function Sidebar({openSidebarToggle, OpenSidebar}) {
   return (
-    <>
-
-      <aside>
-        <div className="">
-        <div className="flex">
-          <BsCart3 />SHOP
+    <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive": ""}>
+        <div className='sidebar-title'>
+            <div className='sidebar-brand'>
+                <h6 className='icon_header'/> Mitti Mahal
+            </div>
+            <span className='icon1 close_icon' onClick={OpenSidebar}>X</span>
         </div>
-        <span className="">X</span>
-        </div>
-        <ul>
-          <li>
-            <Link to="/">Dashboard</Link>
 
-          </li>
-          <li>
-            <Link to="/">Customers</Link>
-
-          </li>
-          <li>
-            <Link to="/">Manage Product</Link>
-
-          </li>
-          <li>
-            <Link to="/">Add Product</Link>
-
-          </li>
-        
-        
-
+        <ul className='sidebar-list'>
+           
+            <li className='sidebar-list-item'>
+                <Link to="/admin/dashboard">
+                    <BsFillArchiveFill className='icon'/> Dashboard
+                </Link>
+            </li>
+            <li className='sidebar-list-item'>
+                <Link to="/admin/ManageProduct">
+                    <BsFillGrid3X3GapFill className='icon'/> Manage Product
+                </Link>
+            </li>
+            
         </ul>
-      </aside>
-
-    </>
+    </aside>
   )
 }
 

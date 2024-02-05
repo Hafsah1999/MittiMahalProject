@@ -1,25 +1,32 @@
-import { BsFillBellFill,BsFillEnvelopeFill,BsPersonCircle,BsSearch,BsJustify} from 'react-icons/bs'
+import React from 'react'
+import { BsFillBellFill, BsFillEnvelopeFill, BsPersonCircle, BsSearch, BsJustify }
+  from 'react-icons/bs'
+import logo from '../../assets/Logo2.png'
+import { Link } from 'react-router-dom'
 
-
-const Header = () => {
+function Header({ OpenSidebar, children }) {
   return (
-    <>
-    
-    <header className="flex items-center justify-between py-1 px-4" >
-        <div className="none">
-            <BsJustify className='fs-4' />
-        </div>
-        <div className=''>
-            <BsSearch className='fs-4'/>
-        </div>
-        <div className="flex px-2">
-            <BsFillBellFill  className='fs-4'/>
-            <BsFillEnvelopeFill className='mx-3 fs-4'/>
-            <BsPersonCircle className='fs-4' />
-        </div>
-    </header>
-    
-    </>
+    <div className='admin-header h'>
+
+      <header className='header1'>
+        {/* <div className='menu-icon'>
+          <BsJustify className='icon' onClick={OpenSidebar} />
+        </div> */}
+        <Link className="navbar-brand me-2" to="/">
+          <img
+            src={logo}
+            height={10}
+            alt="skjh"
+            // loading="lazy"
+            style={{ marginTop: "-8px", marginBottom: "-8px" }}
+          />
+        </Link>
+        {/* <div className='header-right'>
+          <BsPersonCircle className='icon' />
+        </div> */}
+      </header>
+      {children}
+    </div>
   )
 }
 

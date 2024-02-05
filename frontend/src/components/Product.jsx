@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { IoSearch } from "react-icons/io5";
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../../Redux/CartContext';
+import { addToCart } from '../Redux/CartContext';
 import toast from 'react-hot-toast';
 
 const Product = () => {

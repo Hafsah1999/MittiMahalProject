@@ -43,9 +43,9 @@ router.get("/getbyid/:id", (req, res) => {
 });
 
 
-router.get("/getbyemail/:email", (req,res) => {
-  console.log(req.params.email)
-  Model.find({ email: req.params.email })
+router.get("/getbycategory/:category", (req,res) => {
+  console.log(req.params.category)
+  Model.find({ category: req.params.category })
   .then((result) => {
     res.json(result)
   }).catch((err) => {
@@ -53,6 +53,48 @@ router.get("/getbyemail/:email", (req,res) => {
     res.status(500).json(err)
    });
 });
+
+router.get("/getbycategory/:showpiece", (req, res) => {
+  console.log(req.params.id);
+  Model.find({ pcategory: req.params.showpiece })
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get('/getbypcategory/:watercontainer', (req,res) => {
+  console.log(req.params.id);
+  Model.find({pcategory: req.params.watercontainer})
+  .then((result) => {
+      res.json(result)
+  }).catch((err) => {
+      res.status(500).json(err)
+  });
+})
+
+router.get('/getbycategory/:utensil', (req,res) => {
+  console.log(req.params.id);
+  Model.find({pcategory: req.params.utensil})
+  .then((result) => {
+      res.json(result)
+  }).catch((err) => {
+      res.status(500).json(err)
+  });
+})
+
+router.get('/getbypcategory/:decoration', (req,res) => {
+  console.log(req.params.id);
+  Model.find({pcategory: req.params.decoration})
+  .then((result) => {
+      res.json(result)
+  }).catch((err) => {
+      res.status(500).json(err)
+  });
+})
 
 router.delete("/delete/:id", (req,res) => {
   Model.findByIdAndDelete(req.params.id)
