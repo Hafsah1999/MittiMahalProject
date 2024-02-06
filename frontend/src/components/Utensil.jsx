@@ -1,16 +1,29 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../Redux/CartContext";
+import toast from "react-hot-toast";
 
 
-const Utensil = () => {
+const Showpiece = () => {
+
+  const dispatch = useDispatch();
+
+
+  // add to cart 
+  const send = (e) => {
+    dispatch(addToCart(e))
+    toast.success("Item added In Your Cart")
+  }
+
   const [product, setProduct] = useState([]);
 
 
   const { category } = useParams();
 
   const fetchShowpieceproduct = async () => {
-    const res = await fetch("http://localhost:5000/product/getbycategory/utensil");
+    const res = await fetch("http://localhost:5000/product/getbycategory/Utensil");
 
     console.log(res.status);
 
@@ -58,14 +71,14 @@ const Utensil = () => {
 
   const filterProducts = (e) => {
       const value = e.target.value;
-      setProductList(productList.filter((laptop) => {
-          return laptop.name.toLowerCase().includes(value.toLowerCase())
+      setProduct(product.filter((product) => {
+          return product.name.toLowerCase().includes(value.toLowerCase())
       })
       );
   };
 
   return (
-    <>
+    <div className="pt-16">
 
     <form className="input-group mb-4 w-75 mx-auto">
       <input type="search" role="search" className="form-control bg-dark bg-opacity-25" style={{fontFamily:"cursive"}} placeholder='Search' onChange={filterProducts} />
@@ -84,8 +97,8 @@ const Utensil = () => {
 
 
 
-  </>
+  </div>
   );
 };
 
-export default Utensil;
+export default Showpiece;
