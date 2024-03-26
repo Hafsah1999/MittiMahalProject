@@ -8,11 +8,8 @@ const FeedbackRouter = require('./Routers/FeedbackRouter');
 const contactRouter = require('./Routers/contactRouter');
 const userRouter = require('./Routers/userRouter');
 const productRouter = require('./Routers/productRouter');
-// const showpieceRouter = require('./Routers/showpieceRouter');
-// const decorationRouter = require('./Routers/decorationRouter');
-// const utensilRouter = require('./Routers/utensilRouter');
-// const watercontainerRouter = require('./Routers/watercontainerRouter');
-// const utilRouter = require('./Routers/Utils')
+
+const utilRouter = require('./Routers/Utils')
 
 
 
@@ -30,11 +27,8 @@ app.use('/Feedback', FeedbackRouter)
 app.use('/contact', contactRouter)
 app.use('/user', userRouter)
 app.use('/product', productRouter)
-// app.use('/util', utilRouter)
-// app.use('/product',showpieceRouter)
-// app.use('/product',utensilRouter)
-// app.use('/product',decorationRouter)
-// app.use('/product',watercontainerRouter)
+app.use('/util', utilRouter)
+
 
 
 

@@ -56,6 +56,18 @@ const Addproduct = () => {
         })
         console.log(res.status);
     }
+    const multipleFile = async (e) => {
+        let file = e.target.files[0];
+        setSelFile(file.name);
+        const fd = new FormData();
+        fd.append('myfile', file);
+
+        const res = await fetch('http://localhost:5000/util/getfile', {
+            method: 'POST',
+            body: fd
+        })
+        console.log(res.status);
+    }
 
 
 
@@ -84,6 +96,17 @@ const Addproduct = () => {
                         type="file"
                         name="image"
                         onChange={uploadFile}
+                        className="form-control mb-3"
+                        required=''
+                    />
+                </div>
+                
+                <div className="form-group">
+                    <label htmlFor="imageUrl" className="mb-2"></label>
+                    <input
+                        type="file"
+                        name="image"
+                        onChange={multipleFile}
                         className="form-control mb-3"
                         required=''
                     />

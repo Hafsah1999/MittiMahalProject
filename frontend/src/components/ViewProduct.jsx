@@ -1,24 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { Link, useParams } from 'react-router-dom'
+import {  useParams } from 'react-router-dom'
 import { addToCart } from '../Redux/CartContext';
 import toast from 'react-hot-toast';
+import RelatedProducts from './RelatedProducts';
 
 const ViewProduct = () => {
   const { id } = useParams();
-  const [count, setCount] = useState(0);
 
-  const handleIncrement = () => {
-    setCount(count + 1);
-  };
-
-  const handleDecrement = () => {
-    setCount(count - 1);
-  };
-
-  // const handleReset = () => {
-  //     setCount(0);
-  // }
   const dispatch = useDispatch();
   const send = (e) => {
     dispatch(addToCart(e))
@@ -43,39 +32,44 @@ const ViewProduct = () => {
   }, []);
 
 
+
+
   return (
     <>
       {
         productList !== null ? (
 
-          <div className="container p-5">
+          <div className="container pt-24 px-16">
             <div className="row ">
-              <div className="col-md-6 flex items-center justify-center">
-                <img src={'http://localhost:5000/' + productList.image} alt="" className="  img-fluid  w-75 "  />
+              <div className="col-md-2 block m-auto">
+                <img src={'http://localhost:5000/' + productList.image} onClick={window.scrollTo(0, 0)} alt="" className="  img-fluid  mb-2 w-75 " />
+                <img src={'http://localhost:5000/' + productList.image} onClick={window.scrollTo(0, 0)} alt="" className="  img-fluid mb-2 w-75 " />
+                <img src={'http://localhost:5000/' + productList.image} onClick={window.scrollTo(0, 0)} alt="" className="  img-fluid mb-2 w-75 " />
+                <img src={'http://localhost:5000/' + productList.image} onClick={window.scrollTo(0, 0)} alt="" className="  img-fluid mb-2 w-75 " />
+              </div>
+              <div className="col-md-4 block m-auto">
+                <img src={'http://localhost:5000/' + productList.image} onClick={window.scrollTo(0, 0)} alt="" className="  img-fluid  w-100  " />
 
               </div>
-              <div className="col-md-6 ">
-                <h1 className=' fw-semibold fs-1 mt-3 mb-3' style={{ fontFamily: "serif" }}>{productList.pname}</h1>
-                <p className='text-red-800 fs-5' style={{ fontFamily: "cursive" }}>{productList.pprice}</p>
-                <p className='text-blue-800 fs-5 fw-bold mt-3' style={{ fontFamily: "cursive" }}>{productList.pcategory}</p>
-
+              <div className="col-md-6">
+              <h1 className=' fw-semibold fs-2 mt-3 mb-3' style={{ fontFamily: "serif" }}>{productList.pname}</h1>
+                <p className='text-red-800 fs-5 fw-bold' style={{ fontFamily: "cursive" }}>{productList.pprice}</p>
                 <p className='text-secondary mt-4 mb-4 fs-5' style={{ fontFamily: "serif" }}>{productList.pdetail}</p>
-                <div className="flex">
-                <div className="button-container flex">
-                  <button className="increase-button btn" onClick={handleIncrement}>+</button>
-                  <button className="count-display btn "> {count}</button>
-
-                  <button className="decrease-button btn " onClick={handleDecrement}>-</button>
-                  {/* <button className="reset-button" onClick={handleReset}>Reset</button> */}
-                </div>
-
-              <button className='mt-2 mb-2 btn btn-success' onClick={() => send(productList)} >Add TO Cart</button>
-                
-                </div>
-
-                <Link to="/BuyNow"><button type="button " style={{ fontFamily: "serif" }} className='btn btn-danger fs-5 w-50 mt-3'>Buy Now</button></Link>
+                <button className='mt-3  btn btn-danger fs-5 px-4 ' onClick={() => send(productList)} >Add TO Cart</button>
+                <p className=' mb-2 mt-4 ' ><span className="fw-bold me-1">Category:</span>{productList.pcategory}</p>
+                <p className=""><span className="fw-bold me-1">Tags:</span>Unique,Latest</p>
 
               </div>
+            </div>
+
+
+
+
+
+
+
+            <div className="row pt-24">
+              <RelatedProducts />
             </div>
           </div>
 

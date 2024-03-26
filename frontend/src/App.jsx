@@ -25,6 +25,9 @@ import { AppProvider } from './AppContext'
 // import Admin from './components/Admin/Index'
 import Main from './components/Admin/Index'
 import ManageProduct from './components/ManageProduct'
+import Filters from './components/Filters'
+import Dashboard from './components/Admin/Dashboard'
+// import Dashboard from '../components/Admin/Dashboard'
 
 
 
@@ -39,8 +42,11 @@ const App = () => {
             <Routes >
               <Route path="/"  element={<Home />} />
 
+
               <Route path="/CartDetails" element={<CartDetails />} />
               <Route path="/CartContext" element={<CartContext />} />
+              <Route path="/Filters" element={<Filters />} />
+
 
               <Route path="/About" element={<About />} />
               <Route path="/Login" element={<Login />} />
@@ -58,8 +64,9 @@ const App = () => {
               <Route path="/AddProduct" element={<Addproduct />} />
 
               <Route path="/Admin" element={<Main />}>
-                {/* <Route path='dashboard' element={<Dashboard />} /> */}
                 <Route path='ManageProduct' element={<ManageProduct />} />
+                <Route path="Dashboard"  element={<Dashboard />} />
+
 
   
 

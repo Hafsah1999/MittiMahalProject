@@ -19,14 +19,14 @@ const Header = () => {
     const location = useLocation();
 
     // Specify the paths where you want to hide the Navbar
-    const hideNavbarPaths = ['/Login','/Signup','/Admin/Dashboard'];
-  
+    const hideNavbarPaths = ['/Login', '/Signup', '/Admin', '/Filters', '/Feedback', '/Admin/ManageProduct', '/Admin/Dashboard'];
+
     // Check if the current path is in the hideNavbarPaths array
     const shouldHideNavbar = hideNavbarPaths.includes(location.pathname);
-  
+
     // Render Navbar only if shouldHideNavbar is false
     return shouldHideNavbar ? null : (
-  
+
         <>
             <header className="fixed shadow-md  w-full h-14 px-4  md:px-4 z-50 bg-white">
                 <div className="flex items-center   h-full justify-between">
@@ -45,12 +45,13 @@ const Header = () => {
 
                             <Link to="/Contact" className="text-red-600 fw-bold fs-4 hover:text-blue-500 " style={{ fontFamily: "serif" }}>Contact</Link>
 
-
                         </nav>
+                    </div>
+                    <div className="flex">
                         <NavLink to="/CartDetails" className="text-2xl text-slate-600 relative  hover:text-blue-500 ">
-                            <FaShoppingCart className="text-red-600" />
+                            <FaShoppingCart className="text-red-600 mx-3    " />
                             {carts.length > 0 && (
-                                <span className="absolute top-0 right-0 bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                                <span className="absolute top-0 right-0  bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
                                     {carts.length}
                                 </span>
                             )}
