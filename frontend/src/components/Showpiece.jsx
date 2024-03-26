@@ -58,7 +58,7 @@ const Showpiece = () => {
 
   const filterProducts = (e) => {
       const value = e.target.value;
-      setProductList(productList.filter((laptop) => {
+      setProduct(product.filter((laptop) => {
           return laptop.name.toLowerCase().includes(value.toLowerCase())
       })
       );

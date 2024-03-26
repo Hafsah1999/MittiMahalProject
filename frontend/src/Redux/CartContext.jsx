@@ -1,13 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-const initialState = {
-    carts: []
+
+const getInitialState = () => {
+    const data = JSON.parse(sessionStorage.getItem("cart"));
+    if (data !== null) {
+        return { carts: data }
+    } else {
+        return { carts: [] }
+    }
 }
 
 // card slice
 const cartSlice = createSlice({
     name: "cartslice",
-    initialState,
+    initialState: getInitialState(),
     reducers: {
 
         // add to cart
@@ -23,32 +29,38 @@ const cartSlice = createSlice({
 
             }
             console.log(state.carts);
+            sessionStorage.setItem("cart", JSON.stringify(state.carts));
         },
 
         // remove perticular iteams
-        removeToCart:(state,action)=>{
-            const data = state.carts.filter((ele)=>ele.id !== action.payload);
-            state.carts = data
+        removeToCart: (state, action) => {
+            console.log(action.payload);
+            console.log(state.carts);
+            const data = state.carts.filter((ele) => ele._id !== action.payload);
+            state.carts = data;
+            sessionStorage.setItem("cart", JSON.stringify(state.carts));
         },
 
         // remove single iteams
-        removeSingleIteams:(state,action)=>{
-            const IteamIndex_dec = state.carts.findIndex((iteam) => iteam.id === action.payload.id);
+        removeSingleIteams: (state, action) => {
+            const IteamIndex_dec = state.carts.findIndex((iteam) => iteam._id === action.payload._id);
 
-            if(state.carts[IteamIndex_dec].qnty >=1){
+            if (state.carts[IteamIndex_dec].qnty >= 1) {
                 state.carts[IteamIndex_dec].qnty -= 1
             }
+            sessionStorage.setItem("cart", JSON.stringify(state.carts));
 
         },
 
         // clear cart
-        emptycartIteam:(state)=>{
+        emptycartIteam: (state) => {
             state.carts = []
+            sessionStorage.setItem("cart", JSON.stringify(state.carts));
         }
     }
 });
 
-export const { addToCart,removeToCart,removeSingleIteams ,emptycartIteam} = cartSlice.actions;
+export const { addToCart, removeToCart, removeSingleIteams, emptycartIteam } = cartSlice.actions;
 
 export default cartSlice.reducer;
 

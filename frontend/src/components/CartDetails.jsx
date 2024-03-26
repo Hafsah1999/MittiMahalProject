@@ -27,7 +27,6 @@ const CartDetails = () => {
     const handleIncrement = (e) => {
         dispatch(addToCart(e));
         toast.success("Item added to your cart");
-
         // Update total price and quantity after adding to the cart
         total();
         countquantity();
@@ -183,7 +182,7 @@ const CartDetails = () => {
                                                             <tr>
                                                                 <td>
                                                                     <button className='btn block m-auto'
-                                                                        onClick={() => handleDecrement(data.id)}
+                                                                        onClick={() => handleDecrement(data._id)}
                                                                     ><i className='fa fa-trash-alt'></i></button>
                                                                 </td>
                                                                 <td><div className='text-center fs-5 ' style={{ fontFamily: "serif" }}><p>{data.pcategory}</p> </div></td>
@@ -192,7 +191,7 @@ const CartDetails = () => {
                                                                 <td>
                                                                     <div className="text-center">
                                                                         <button className='btn' type='button'
-                                                                            onClick={data.qnty <= 1 ? () => handleDecrement(data.id) : () => handleSingleDecrement(data)}
+                                                                            onClick={data.qnty <= 1 ? () => handleDecrement(data._id) : () => handleSingleDecrement(data)}
                                                                         >
                                                                             <i className='fa fa-minus'></i>
                                                                         </button>
