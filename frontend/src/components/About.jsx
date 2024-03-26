@@ -102,14 +102,14 @@ const About = () => {
             </div>
 
             <div className="container">
-            <p className="text-center fs-2 fw-bold bg-slate-200 py-1 text-red-900">Customer Reviews</p>
+            <p className="text-center fs-2 fw-bold bg-slate-200 py-1 text-red-900">Feedback</p>
             <div className="container-fluid ">
         <div className="container">
           <div className="row  ">
             {displayfeedbackData()}
           </div>
         </div>
-       <Link to="/Feedback"> <button className="btn btn-danger text-white w-25 m-auto block mt-4">Write a Review</button>
+       <Link to="/Feedback"> <button className="btn btn-danger text-white w-25 m-auto block mt-4">Give Feedback</button>
        </Link>
       </div>
 

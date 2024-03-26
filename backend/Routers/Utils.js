@@ -16,4 +16,9 @@ router.post('/uploadfile', uploader.single('myfile'), (req, res) => {
     res.json({message : 'file uploaded successfully'})
 });
 
+router.post( '/getfile',uploader.array('photos',5), (req,res) => {
+    res.json({message : 'photos uploaded successfully'})
+
+})
+
 module.exports = router;

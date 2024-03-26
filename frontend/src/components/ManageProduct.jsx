@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { useState, useEffect } from "react"
+import UpdateProduct from "./UpdateProduct";
 
-const ManageProduct = () => {
-    // Manage Product Code
+const Manage = () => {
     const [Data, setData] = useState([]);
+
 
     //User fetch func
     const fetchUserData = async () => {
@@ -39,52 +39,55 @@ const ManageProduct = () => {
             <>
                 <tr>
                     <td>{obj.pname}</td>
-                    <td>{obj.pdetail}</td>
+                    <td>{obj.pcategory}</td>
                     <td>{obj.pprice}</td>
 
-                    <td>{obj.pcategory}</td>
 
+                    <td>{obj.pdetail}</td>
+                
+                  
                     <td>
-                        <button className="btn btn-danger" onClick={() => { deleteFuction(obj._id) }}>Delete</button>
+                        <button className="btn btn-danger" onClick={() => {deleteFuction(obj._id)}}>Delete</button>
                     </td>
                     <td>
-                        <button className="btn btn-success" onClick={() => { Navigate('/UpdateProduct/' + obj._id) }}>Update</button>
+                        <UpdateProduct><button className="btn btn-success">Update</button></UpdateProduct>
                     </td>
                 </tr>
             </>
         ))
     }
-    <div>
 
-        <header className="bg-danger text-white ">
-            <div className="container py-5">
-                <h1 className="text-center fs-3">Manage Product</h1>
 
+
+    return (
+        <div>
+
+            <header className="bg-danger text-white ">
+                <div className="container py-5">
+                    <h1 className="">Manage User</h1>
+
+                </div>
+            </header>
+
+            <div className="container mt-5">
+                <table className="table table-dark">
+                    <thead>
+                        <tr>
+                            <th>pname</th>
+                            <th>pdetail</th>
+                            <th></th>
+                            
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {displayUsers()}
+                    </tbody>
+                </table>
             </div>
-        </header>
 
-        <div className="container mt-5">
-            <table className="table table-dark">
-                <thead>
-                    <tr>
-                        <th>pname</th>
-                        <th>pdetail</th>
-                        <th>pprice</th>
-                        <th>pcategory</th>
-                        <th></th>
-                        <th></th>
-
-
-                    </tr>
-                </thead>
-                <tbody>
-                    {displayUsers()}
-                </tbody>
-            </table>
         </div>
-
-    </div>
-
+    )
 }
 
-export default ManageProduct
+export default Manage

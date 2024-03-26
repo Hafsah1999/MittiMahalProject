@@ -207,13 +207,13 @@ const Home = () => {
 
       <div className="container mx-5 px-5 mb-5">
         <div className="px-5 d-flex justify-center py-2 ">
-          <Link to="/" className='Category-1 mx-2 px-5 py-2'>All</Link>
+          <Link to="/" className='Category-1 mx-2 px-5 py-2 '>All</Link>
 
 
 
           <Link to="/Showpiece" className='Category px-5 mx-2 py-2'>Showpiece</Link>
           <Link to="/Utensil" className='Category mx-2 px-5 py-2'>Utensils</Link>
-          <Link to="/WaterContainer" className='Category mx-2 px-5 py-2'>Water Containers</Link>
+          <Link to="/WaterContainer" className='Category mx-2 px-2 py-2'>Water Containers</Link>
           <Link to="/Decoration" className='Category mx-2 px-5 py-2'>Decoration</Link>
         </div>
 

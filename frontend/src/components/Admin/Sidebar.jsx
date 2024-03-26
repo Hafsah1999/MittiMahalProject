@@ -1,102 +1,45 @@
+import { Link } from 'react-router-dom'
+import Logo from '../../assets/Logo2.png'
+const Sidebar = () => {
+    return (
+        <>
 
-// import React from 'react'
-import 
-{BsCart3, BsFillArchiveFill, BsFillGrid3X3GapFill}
- from 'react-icons/bs'
- import { Link } from 'react-router-dom'
-import { FaUser } from "react-icons/fa";
-import { MdSpaceDashboard } from "react-icons/md";
-import { FaShoppingBag } from "react-icons/fa";
-// import { BsCart3 } from 'react-icons/bs';
-
-
-function Sidebar({openSidebarToggle, OpenSidebar}) {
-  return (
-    <>
-    <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive": ""}>
-        <div className='sidebar-title'>
-            <div className='sidebar-brand'>
-                <h6 className='icon_header'/> Mitti Mahal
+            <div className="bg-white sidebar p-2">
+                <div className="m-2">
+                  <Link to="/"> <img src={Logo} alt="" /></Link> 
+                    {/* <i className="bi bi-bootstrap-fill me-2 fs-4"></i>
+                    <span className="brand-name fs-4">Hafsah</span> */}
+                </div>
+                <hr className="text-dark" />
+                <div className="list-group list-group-flush">
+                    <a className="list-group-item py-2 my-2">
+                    <Link to="Dashboard" className='nav-link'>
+            <i className="bi bi-speedometer2  fs-5 me-3"></i>
+                        <span className="fs-5">Dashboard</span>
+                        </Link>
+                    </a>
+                    <a className="list-group-item py-2 my-2">
+                        <i className="bi bi-house  fs-5 me-3"></i>
+                        <span className="fs-5">Home</span>
+                    </a>
+                    <a className="list-group-item py-2 my-2">
+                        <Link to="ManageProduct" className='nav-link'>
+                        <i className="bi bi-table  fs-5 me-3"></i>
+                            <span className="fs-5">Products</span></Link>
+                    </a>
+                    <a className="list-group-item py-2 my-2">
+                        <i className="bi bi-people  fs-5 me-3"></i>
+                        <span className="fs-5">Customers</span>
+                    </a>
+                    <a className="list-group-item py-2 my-2">
+                        <i className="bi bi-power  fs-5 me-3"></i>
+                        <span className="fs-5">Logout</span>
+                    </a>
+                </div>
             </div>
-            <span className='icon1 close_icon' onClick={OpenSidebar}>X</span>
-        </div>
-
-        <ul className='sidebar-list'>
-           
-            <li className='sidebar-list-item'>
-                <Link to="/admin/dashboard">
-                    <BsFillArchiveFill className='icon'/> Dashboard
-                </Link>
-            </li>
-            <li className='sidebar-list-item'>
-                <Link to="/admin/ManageProduct">
-                    <BsFillGrid3X3GapFill className='icon'/> Manage Product
-                </Link>
-            </li>
-            
-        </ul>
-    </aside>
-  
-   
-
-      
-
-        <aside
-
-          className=" top-0 left-0 bg-dark z-40 w-64 h-screen  transition-transform -translate-x-full sm:translate-x-0"
-          aria-label="Sidebar"
-        >
-          <div className="h-full px-3  py-4 overflow-y-auto bg-gray-300 dark:bg-gray-800">
-            <ul className="space-y-2 font-medium fs-5">
-              <li>
-                <Link
-                  to="/"
-                  className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                >
-                  <MdSpaceDashboard className='fs-5 text-slate-600' />
-                  <span className="ms-3">Dashboard</span>
-                </Link>
-              </li>
-              <li>
-
-              </li>
-
-              <li>
-                <Link
-                  to="/"
-                  className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                >
-                  <FaUser className='fs-5 text-slate-600' />
-                  <span className="flex-1 ms-3 whitespace-nowrap">Users</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/Product"
-                  className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                >
-                  <FaShoppingBag className='fs-5 text-slate-600' />
-                  <span className="flex-1 ms-3 whitespace-nowrap">Products</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/"
-                  className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                >
-                  <BsCart3 className='fs-5 text-slate-600' />
-                  <span className="flex-1 ms-3 whitespace-nowrap">Categories</span>
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-</aside>
-
-
 
         </>
-        )
+    )
 }
 
-        export default Sidebar
+export default Sidebar
